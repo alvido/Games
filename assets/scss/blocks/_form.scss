@@ -1,4 +1,4 @@
-.form {
+form {
 
     label {
         display: flex;
@@ -12,18 +12,19 @@
     input,
     select {
         margin: 0;
-        @include fluid-text(20, 16);
-        font-weight: 500;
+        font-size: 16px;
+        font-weight: 800;
         outline: none;
         width: 100%;
-        height: 64px;
-        padding: 16px 24px;
+        height: var(--input-height);
+        padding: 10px 24px;
         color: var(--color-black);
         border-radius: 40px;
         border: 1px solid rgba(58, 95, 111, 0.16);
 
         &::placeholder {
-            color: #3A5F6F;
+            color: var(--color-white);
+            opacity: .3;
         }
 
 
@@ -32,9 +33,19 @@
         }
 
         &:focus-visible {
-            border: 1px solid var(--color-cyan);
+            border: 1px solid var(--color-gray);
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus {
+            background-color: var(--color-black);/* Фон */
+            color: var(--color-white);/* Цвет текста */
+            -webkit-text-fill-color: var(--color-white);/* Цвет текста для автозаполнения */
+            transition: background-color 5000s ease-in-out 0s;/* Отключение эффекта смены фона */
         }
     }
+
 
     textarea {
         margin: 0;
@@ -50,7 +61,7 @@
         resize: none;
 
         &:focus-visible {
-            border: 1px solid var(--color-cyan);
+            border: 1px solid var(--color-gray);
         }
     }
 
@@ -100,8 +111,8 @@
 
     /* При отмеченном radio button изменить цвет и показать "галочку" */
     .custom-radio input[type="radio"]:checked+.radiomark {
-        background-color: var(--color-cyan);
-        border: 1px solid var(--color-cyan);
+        background-color: var(--color-gray);
+        border: 1px solid var(--color-gray);
 
         &::after {
             opacity: 1;

@@ -3,11 +3,13 @@ html {
 }
 
 body {
+    margin: 0 auto;
+    max-width: var(--container-width);
     display: flex;
     flex-direction: column;
 
-    color: var(--color-black);
-    background: var(--color-white);
+    color: var(--color-white);
+    background: var(--color-black);
 
     font-family: var(--font-family-base);
     font-size: 16px;
@@ -24,7 +26,11 @@ main {
     overflow: hidden;
     flex: 1;
     display: flex;
-    padding: 20px;
+}
+
+aside {
+    width: 280px;
+    border-right: 1px solid #D8D8D82A;
 }
 
 a,
@@ -72,6 +78,6 @@ h5 {
 }
 
 .wrapper {
-    @include flex-center;
+    display: flex;
     justify-content: space-between;
 }

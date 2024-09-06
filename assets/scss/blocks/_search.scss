@@ -1,0 +1,19 @@
+.search {
+    &__form {
+        position: relative;
+    }
+
+    &__field {
+        width: 560px;
+        padding-right: 50px;
+        color: var(--color-white);
+        background: var(--color-dark);
+    }
+
+    &__submit {
+        position: absolute;
+        top: 50%;
+        right: 24px;
+        transform: translate(0, -50%);
+    }
+}

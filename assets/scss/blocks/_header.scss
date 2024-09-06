@@ -1,7 +1,6 @@
 .header {
-    padding: 24px 0;
+    padding: 20px 0;
     background-color: #333;
-    color: white;
 
     &.fixed {
         position: fixed;
@@ -9,6 +8,18 @@
         right: 0;
         top: 0;
         z-index: 2;
-        background: var(--color-white);
+    }
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+    }
+
+    &__search {
+        margin-left: clamp(6.25rem, -23.75rem + 46.88vw, 18.438rem);
+    }
+
+    &__burger {
+        margin-left: auto;
     }
 }

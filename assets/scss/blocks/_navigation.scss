@@ -1,53 +1,131 @@
 .navigation {
-    @include flex-center;
-    gap: 50px;
+    padding: 24px 0;
 
-    @include mobile {
-        padding: 40px 24px;
-        position: absolute;
-        top: -1000%;
-        left: 0;
-        z-index: 1;
-        width: 100%;
-        height: 100vh;
-        opacity: 0;
-        transition: all .3s ease;
-        background: var(--color-white);
+    // @include mobile {
+    //     padding: 40px 24px;
+    //     position: absolute;
+    //     top: -1000%;
+    //     left: 0;
+    //     z-index: 1;
+    //     width: 100%;
+    //     height: 100vh;
+    //     opacity: 0;
+    //     transition: all .3s ease;
+    //     background: var(--color-white);
 
-        &.navigation--active {
-            top: 100%;
-            opacity: 1;
-        }
-    }
+    //     &.navigation--active {
+    //         top: 100%;
+    //         opacity: 1;
+    //     }
+    // }
 
     &__list {
-        @include flex-center;
-        gap: 60px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
 
         & li {
+            &.menu-item-has-children {
+
+                &>a {
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        right: 24px;
+                        top: 50%;
+                        transform: translate(0, -50%) rotate(180deg);
+                        width: 16px;
+                        height: 16px;
+                        background: url(/assets/images/icon/chevron.svg) no-repeat center;
+                    }
+                }
+
+            }
+
             & a {
                 position: relative;
-                display: block;
-                font-weight: 500;
+                padding: 0 24px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 14px;
+                z-index: 1;
 
-                &::after{
+                @include hover {
+                    color: var(--color-accent);
+
+                    &::before {
+                        height: 100%;
+                    }
+                }
+
+                &.active {
+                    padding-block: 10px;
+                    font-weight: 800;
+                    font-size: 16px;
+                    color: var(--color-accent);
+                    text-transform: uppercase;
+
+                    &::before {
+                        height: 100%;
+                    }
+                }
+
+                &::before {
                     content: '';
                     position: absolute;
-                    left: 50%;
-                    top: 100%;
-                    translate: -50% 0;
-                    width: 0;
-                    height: 2px;
-                    background: var(--color-black);
+                    top: 50%;
+                    left: 0px;
+                    transform: translate(0, -50%);
+                    width: 4px;
+                    height: 0%;
+                    background: var(--color-accent);
                     transition-duration: var(--transition-duration);
+                }
+            }
+        }
+
+        & .sub-menu {
+            margin-top: 16px;
+
+            & a {
+                padding: 8px 24px 8px 56px;
+
+                &.active {
+                    color: inherit;
+
+                    &:before {
+                        display: none;
+                    }
+
+                    &::after {
+                        opacity: .15;
+                    }
                 }
 
                 @include hover {
-                    color: var(--color-black);
+                    color: inherit;
+
+                    &:before {
+                        display: none;
+                    }
 
                     &::after {
-                        width: 100%;
+                        opacity: .15;
                     }
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: var(--color-white);
+                    opacity: 0;
+                    transition-duration: var(--transition-duration);
+                    z-index: -1;
                 }
             }
         }
