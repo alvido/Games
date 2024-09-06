@@ -1,11 +1,16 @@
 //width main container
-$container: 1280;
+$container: 1440;
 
 :root {
 
     /*colors*/
-    --color-black: #252323;
+    --color-black: #000000;
+    --color-dark: #252525;
+
+    --color-gray: #A5A8AE;
     --color-white: #ffffff;
+
+    --color-accent: #6D49FF;
 
     --color-transparent: transparent;
     --color-shadow: rgba(22, 28, 45, 0.05);
@@ -19,10 +24,10 @@ $container: 1280;
     /*border*/
 
     /*body*/
-    --font-family-base: "Montserat", serif;
+    --font-family-base: "Nunito", sans-serif;
 
     --container-width: #{$container}px;
-    --container-padding-x: clamp(1rem, -0.333rem + 5.93vw, 5rem);
+    --container-padding-x: 24px;
 
     --section-padding-y: 80px;
     /*body*/

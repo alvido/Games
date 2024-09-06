@@ -238,8 +238,11 @@ table {
 }
 :root {
   /*colors*/
-  --color-black: #252323;
+  --color-black: #000000;
+  --color-dark: #252525;
+  --color-gray: #A5A8AE;
   --color-white: #ffffff;
+  --color-accent: #6D49FF;
   --color-transparent: transparent;
   --color-shadow: rgba(22, 28, 45, 0.05);
   /*colors*/
@@ -250,9 +253,9 @@ table {
   --border-radius-large: 30px;
   /*border*/
   /*body*/
-  --font-family-base: "Montserat", serif;
-  --container-width: 1280px;
-  --container-padding-x: clamp(1rem, -0.333rem + 5.93vw, 5rem);
+  --font-family-base: "Nunito", sans-serif;
+  --container-width: 1440px;
+  --container-padding-x: 24px;
   --section-padding-y: 80px;
   /*body*/
   /*button*/
@@ -300,7 +303,6 @@ html {
 }
 
 body {
-  font-size: clamp(16px, 16vw, 16px);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -311,6 +313,7 @@ body {
   color: var(--color-black);
   background: var(--color-white);
   font-family: var(--font-family-base);
+  font-size: 16px;
   font-weight: 400;
   line-height: 1.25;
 }
@@ -376,6 +379,21 @@ h4 {
 
 h5 {
   font-size: clamp(14px, 14vw, 14px);
+}
+
+.wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 @-webkit-keyframes backAndForth {
@@ -535,7 +553,7 @@ h5 {
   display: block;
   width: 30px;
   height: 3px;
-  background: black;
+  background: wheat;
   border-radius: 3px;
   position: absolute;
   left: 50%;
@@ -887,12 +905,9 @@ h5 {
 }
 
 .header {
-  position: relative;
-  padding: 20px 0;
+  padding: 24px 0;
   background-color: #333;
   color: white;
-  padding: 10px;
-  text-align: center;
 }
 .header.fixed {
   position: fixed;
@@ -903,6 +918,18 @@ h5 {
   background: var(--color-white);
 }
 
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 12px;
+}
 @media (hover: hover) {
   .logo:hover {
     scale: 1.1;
@@ -914,12 +941,11 @@ h5 {
   }
 }
 .logo img {
-  max-width: 90px;
+  max-width: 32px;
 }
-@media (max-width: 767px) {
-  .logo img {
-    max-width: 70px;
-  }
+.logo span {
+  font-weight: 800;
+  text-transform: uppercase;
 }
 
 .navigation {

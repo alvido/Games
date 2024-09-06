@@ -9,36 +9,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Title</title>
-    <link rel="icon" type="image/png" href="assets/images/header/logo.png">
+    <title>Games</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
+
+    <link rel="icon" type="image/png" href="assets/images/header/gamepad.svg">
 
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
 <body>
     <header class="header">
-        <div class="wrapper container">
-            <a href="index.html" class="header__logo logo">
-                <img src="assets/images/header/logo.svg" alt="logo">
-            </a>
-            <nav class="header__navigation navigation">
-                <ul class="navigation__list">
-                    <li>
-                        <a href="about.html">About </a>
-                    </li>
-                    <li>
-                        <a href="partnership.html">Partnerships </a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact </a>
-                    </li>
-                </ul>
-            </nav>
-            <button class="burger" id="burgerButton">
-                <span>
-                    Menu
-                </span>
-            </button>
+        <div class="container">
+            <div class="wrapper">
+                <a href="index.html" class="header__logo logo">
+                    <img src="assets/images/header/logo2.svg" alt="logo">
+                    <span>games</span>
+                </a>
+                <div class="search">
+                    <form method="get" class="search__form" id="search" role="search" action="">
+                        <input type="search" class="search-field" placeholder="Search..." value="" name="s">
+                        <button class="search__submit" id="searchButton" type="submit">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                                    stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                </path>
+                                <path d="M21.0004 21.0004L16.6504 16.6504" stroke="white" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+                <button class="burger" id="burgerButton">
+                    <span>
+                        Menu
+                    </span>
+                </button>
+            </div>
         </div>
     </header>
 

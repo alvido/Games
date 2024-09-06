@@ -1,14 +1,17 @@
 .logo {
+    @include flex-center;
+    gap: 12px;
 
     @include hover {
         scale: 1.1;
     }
 
     & img {
-        max-width: 90px;
+        max-width: 32px;
+    }
 
-        @include mobile {
-        max-width: 70px;
-        }
+    & span {
+        font-weight: 800;
+        text-transform: uppercase;
     }
 }

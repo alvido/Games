@@ -1,11 +1,7 @@
 .header {
-    position: relative;
-    padding: 20px 0;
-
+    padding: 24px 0;
     background-color: #333;
     color: white;
-    padding: 10px;
-    text-align: center;
 
     &.fixed {
         position: fixed;
