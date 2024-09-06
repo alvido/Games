@@ -27,10 +27,6 @@ main {
     padding: 20px;
 }
 
-aside {
-    max-width: 300px;
-}
-
 a,
 button,
 input,
@@ -73,27 +69,4 @@ h4 {
 
 h5 {
     @include fluid-text(14, 14);
-}
-
-.large {
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.5;
-}
-
-.small {
-    font-size: 14px;
-    font-weight: 400;
-}
-
-.wrapper {
-    position: relative;
-    @include flex-center;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.title {
-    font-size: 16px;
-    line-height: 1.5;
 }

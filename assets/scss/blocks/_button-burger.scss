@@ -1,6 +1,7 @@
 .burger {
     @include reset-button;
     @include squere(40px);
+    @include flex-center;
     position: relative;
     z-index: 2;
 
