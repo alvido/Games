@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Swiper demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- Demo styles -->
+    <style>
+        html,
+        body {
+            position: relative;
+            height: 100%;
+        }
+
+        body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+
+        .swiper {
+            width: 100%;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            height: calc((100% - 30px) / 2) !important;
+
+            /* Center slide text vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .swiper-slide:nth-child(5n + 1),
+        .swiper-slide:nth-child(4n + 7) {
+            height: 100% !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Swiper -->
+
+    <div class="swiper mySwiper" id="featured">
+        <ul class="swiper-wrapper">
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image1.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image3.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image5.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image4.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image6.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image2.png" alt="namelogo">
+            </li>
+
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image1.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image3.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image5.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image4.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image6.png" alt="namelogo">
+            </li>
+            <li class="swiper-slide">
+                <img src="assets/images/featured/image2.png" alt="namelogo">
+            </li>
+        </ul>
+        <div class="swiper__navigation">
+            <!-- If we need pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper__navigation-button">
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            <div class="swiper-slide">Slide 4</div>
+            <div class="swiper-slide">Slide 5</div>
+            <div class="swiper-slide">Slide 6</div>
+            <div class="swiper-slide">Slide 7</div>
+            <div class="swiper-slide">Slide 8</div>
+            <div class="swiper-slide">Slide 9</div>
+        </div>
+        <div class="swiper-pagination"></div>
+    </div> -->
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 3,
+            grid: {
+                rows: 2,
+            },
+            spaceBetween: 8,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+    </script>
+</body>
+
+</html>

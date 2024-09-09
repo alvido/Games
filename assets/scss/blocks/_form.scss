@@ -27,11 +27,6 @@ form {
             opacity: .3;
         }
 
-
-        @include mobile {
-            height: 56px;
-        }
-
         &:focus-visible {
             border: 1px solid var(--color-gray);
         }
@@ -39,10 +34,14 @@ form {
         &:-webkit-autofill,
         &:-webkit-autofill:hover,
         &:-webkit-autofill:focus {
-            background-color: var(--color-black);/* Фон */
-            color: var(--color-white);/* Цвет текста */
-            -webkit-text-fill-color: var(--color-white);/* Цвет текста для автозаполнения */
-            transition: background-color 5000s ease-in-out 0s;/* Отключение эффекта смены фона */
+            background-color: var(--color-black);
+            /* Фон */
+            color: var(--color-white);
+            /* Цвет текста */
+            -webkit-text-fill-color: var(--color-white);
+            /* Цвет текста для автозаполнения */
+            transition: background-color 5000s ease-in-out 0s;
+            /* Отключение эффекта смены фона */
         }
     }
 

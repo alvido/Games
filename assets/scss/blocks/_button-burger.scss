@@ -3,52 +3,21 @@
     @include reset-button;
     @include squere(40px);
     position: relative;
+    color: var(--color-white);
     z-index: 2;
 
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        width: 30px;
-        height: 3px;
-        background: wheat;
-        border-radius: 3px;
-
-        position: absolute;
-        left: 50%;
-        translate: -50% 0;
-        transition: all .3s ease;
+    & svg {
+        transition-duration: var(--transition-duration)
     }
 
-    &::before {
-        top: 13px;
-    }
-
-    &::after {
-        bottom: 13px;
-    }
-
-    & span {
-        font-size: 0;
+    @include mobile {
+        @include flex-center;
     }
 
     &.burger--active {
 
-        &::before,
-        &::after {
-            width: 90%;
-            top: 50%;
-            bottom: auto;
-            translate: -50% -50%;
-        }
-
-        &::before {
-            rotate: 45deg;
-        }
-
-        &::after {
-            rotate: -45deg;
-
+        & svg {
+            rotate: 90deg;
         }
     }
 }

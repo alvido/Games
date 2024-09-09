@@ -13,13 +13,26 @@
     &__wrapper {
         display: flex;
         align-items: center;
+
+        @include tablet {
+            justify-content: space-between;
+        }
     }
 
     &__search {
         margin-left: clamp(6.25rem, -23.75rem + 46.88vw, 18.438rem);
-    }
+        width: 560px;
 
-    &__burger {
-        margin-left: auto;
+        @include tablet {
+            margin: 0;
+        }
+
+        @include mobile {
+            width: 60%;
+        }
+
+        @include phone {
+            width: 280px;
+        }
     }
 }

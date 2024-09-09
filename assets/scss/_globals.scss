@@ -81,3 +81,16 @@ h5 {
     display: flex;
     justify-content: space-between;
 }
+
+.page {
+    padding: 32px;
+    width: calc(100% - 280px);
+}
+
+.subtitle {
+    margin-bottom: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    opacity: .4;
+    text-transform: uppercase;
+}
