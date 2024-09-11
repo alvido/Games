@@ -24,28 +24,84 @@ document.addEventListener("DOMContentLoaded", function () {
 //
 
 //
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Выбираем элементы меню с дочерними пунктами
+//   let navChildren = document.querySelectorAll(".menu-item");
+
+//   // Если элементы существуют, добавляем обработчик события
+//   if (navChildren) {
+//     navChildren.forEach((nav) => {
+//       nav.addEventListener("click", function (e) {
+//         // Убираем класс 'active' у всех элементов меню
+//         navChildren.forEach((item) => {
+//           item.classList.remove("active");
+//         });
+
+//         // Переключаем активное состояние для текущего элемента
+//         this.classList.toggle("active");
+
+//         // Ищем подменю и добавляем/убираем класс активного состояния
+//         let subMenu = nav.querySelector(".sub-menu");
+//         if (subMenu) {
+//           subMenu.classList.toggle("active");
+//         }
+//       });
+//     });
+//   }
+// });
+
 document.addEventListener("DOMContentLoaded", function () {
-  // Выбираем элементы меню с дочерними пунктами
-  let navChildren = document.querySelectorAll(".menu-item");
+  // Выбираем элементы ссылок в меню
+  let navChildren = document.querySelectorAll(".menu-item > a");
 
   // Если элементы существуют, добавляем обработчик события
   if (navChildren) {
     navChildren.forEach((nav) => {
       nav.addEventListener("click", function (e) {
-        navChildren.forEach((item) => {
-          item.classList.remove("active");
-        });
-        this.classList.toggle("active");
+        e.preventDefault(); // Отменяем стандартное поведение ссылки
 
-        // Ищем подменю и добавляем/убираем класс активного состояния
-        let subMenu = nav.querySelector(".sub-menu");
+        // Получаем родительский элемент текущей ссылки
+        let parentMenuItem = this.parentElement;
+
+        // Если родительский элемент уже активен, снимаем активность
+        if (parentMenuItem.classList.contains("active")) {
+          parentMenuItem.classList.remove("active");
+
+          // Закрываем подменю, если оно существует
+          let subMenu = parentMenuItem.querySelector(".sub-menu");
+          if (subMenu) {
+            subMenu.classList.remove("active");
+          }
+          return; // Прекращаем выполнение, если элемент уже активен
+        }
+
+        // Убираем класс 'active' у всех остальных элементов меню
+        document.querySelectorAll(".menu-item").forEach((item) => {
+          item.classList.remove("active");
+
+          // Скрываем подменю у всех элементов
+          let subMenu = item.querySelector(".sub-menu");
+          if (subMenu) {
+            subMenu.classList.remove("active");
+          }
+        });
+
+        // Добавляем активное состояние для текущего элемента (родителя)
+        parentMenuItem.classList.add("active");
+
+        // Ищем подменю и добавляем класс активного состояния
+        let subMenu = parentMenuItem.querySelector(".sub-menu");
         if (subMenu) {
-          subMenu.classList.toggle("active");
+          subMenu.classList.add("active");
         }
       });
     });
   }
 });
+
+
+
+
 
 //
 
