@@ -1,56 +1,27 @@
 .swiper {
     margin-top: 24px;
 
+    @include mobile {
+        margin-top: 16px;
+    }
+
     &-wrapper {
         gap: 8px 0;
-
-        &.swiper-grid {
-            height: 240px;
-
-            @include tablet {
-                height: auto;
-            }
-        }
     }
 
     &-slide {
         margin-block: 0 !important;
-        max-width: 176px;
-        height: calc((100% - 8px) / 2) !important;
         border-radius: 8px;
-        @include flex-center;
-
-        &:nth-child(6n + 1),
-        &:nth-child(6n + 6) {
-            min-width: 360px;
-            max-width: none;
-            height: 100% !important;
-        }
-
-        @include tablet {
-            max-width: none;
-            height: 100% !important;
-
-
-            &:nth-child(6n + 1),
-            &:nth-child(6n + 6) {
-                min-width: auto;
-                height: auto;
-            }
-        }
-
-        @include phone {
-            max-height: 160px;
-        }
+        overflow: hidden;
 
         & img {
             width: 100%;
+            height: 100%;
             object-fit: cover;
         }
     }
 
     &__navigation {
-        margin-top: 16px;
         @include flex-center;
 
         .swiper-pagination {
@@ -76,12 +47,16 @@
 
         &-button {
             position: absolute;
-            right: 32px;
+            right: 0px;
             top: 8px;
 
             display: flex;
             align-items: center;
             gap: 4px;
+
+            @include mobile {
+                display: none;
+            }
         }
 
         .swiper-button-next,
@@ -104,6 +79,52 @@
         .swiper-button-prev {
             &::after {
                 rotate: 180deg;
+            }
+        }
+    }
+
+    &#featured {
+
+        & .swiper-grid {
+            height: 240px;
+
+            @include mobile {
+                height: auto;
+            }
+        }
+
+        & .swiper-slide {
+            max-width: 210px;
+
+            &:nth-child(6n + 1),
+            &:nth-child(6n + 6) {
+                max-width: 430px;
+                height: 100% !important;
+            }
+
+            @include tablet {
+                max-width: 250px;
+
+                &:nth-child(6n + 1),
+                &:nth-child(6n + 6) {
+                    max-width: 400px;
+                }
+            }
+
+            @include mobile {
+                max-width: none;
+                height: 100% !important;
+
+
+                &:nth-child(6n + 1),
+                &:nth-child(6n + 6) {
+                    max-width: none;
+                }
+            }
+
+            & img {
+                width: 100%;
+                object-fit: cover;
             }
         }
     }

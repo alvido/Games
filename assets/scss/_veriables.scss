@@ -17,7 +17,7 @@ $container: 1440;
     /*colors*/
 
     /*border*/
-    --border: 2px solid var(--color-black);
+    --border: 2px solid var(--color-accent);
     --border-radius: 16px;
     --border-radius-small: 8px;
     --border-radius-large: 30px;
@@ -27,7 +27,7 @@ $container: 1440;
     --font-family-base: "Nunito", sans-serif;
 
     --container-width: #{$container}px;
-    --container-padding-x: 24px;
+    --container-padding-x: 20px;
 
     --section-padding-y: 80px;
     /*body*/

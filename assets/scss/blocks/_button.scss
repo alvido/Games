@@ -24,10 +24,22 @@
 
     }
 
+    &__transparent {
+        background: var(--color-transparent);
+        border-color: var(--color-white);
+
+        @include hover {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+    }
+
     &.small {
         height: 32px;
         padding: 0 10px;
     }
+
+
 }
 
 .icon {

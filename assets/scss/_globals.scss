@@ -3,10 +3,7 @@ html {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-
-    color: var(--color-white);
+    color: var(--color-gray);
     background: var(--color-black);
 
     font-family: var(--font-family-base);
@@ -20,18 +17,83 @@ body {
     }
 }
 
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 main {
     margin: 0 auto;
     width: 100%;
     max-width: var(--container-width);
-    overflow: hidden;
+    min-height: 600px;
     flex: 1;
     display: flex;
+    overflow: hidden;
 }
 
-aside {
-    width: 280px;
+aside.sidebar {
+    min-width: 72px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 280px;
     border-right: 1px solid #D8D8D82A;
+    transition-duration: var(--transition-duration);
+
+    &.active {
+        min-width: 280px;
+
+        & span {
+            font-size: inherit;
+            margin-left: 8px;
+            width: auto;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        & footer {
+            border-top: 1px solid #D8D8D82A;
+
+            & a,
+            & p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    @include hover {
+        min-width: 280px;
+
+        & span {
+            font-size: inherit;
+            margin-left: 8px;
+            width: auto;
+            opacity: 1;
+            visibility: visible;
+        }
+
+        & footer {
+            border-top: 1px solid #D8D8D82A;
+
+            & a,
+            & p {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.content {
+    flex: 1;
+    padding-inline: 32px;
+    overflow: hidden;
+
+    @include tablet {
+        padding-inline: 20px;
+    }
 }
 
 a,
@@ -61,8 +123,10 @@ h1 {
 }
 
 h2 {
-    @include fluid-text(30, 24);
-    font-weight: 400
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--color-white);
+    margin-bottom: 8px;
 }
 
 h3 {
@@ -71,7 +135,9 @@ h3 {
 }
 
 h4 {
-    @include fluid-text(16, 20);
+    margin-bottom: 16px;
+    color: var(--color-white);
+    @include fluid-text(16, 16);
 }
 
 h5 {
@@ -83,12 +149,8 @@ h5 {
     justify-content: space-between;
 }
 
-.page {
-    padding: 32px;
-    width: calc(100% - 280px);
-}
-
 .subtitle {
+    display: block;
     margin-bottom: 8px;
     font-size: 12px;
     font-weight: 800;
