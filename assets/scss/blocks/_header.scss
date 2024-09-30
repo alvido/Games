@@ -1,6 +1,10 @@
 .header {
-    padding: 20px 0;
-    background-color: #333;
+    padding: 24px 0;
+    background: rgba(255, 255, 255, 0.05);
+
+    @include mobile {
+        padding: 16px 0;
+    }
 
     &.fixed {
         position: fixed;
@@ -28,11 +32,8 @@
         }
 
         @include mobile {
-            width: 60%;
-        }
-
-        @include phone {
-            width: 280px;
+            width: 100%;
+            display: none;
         }
     }
 }

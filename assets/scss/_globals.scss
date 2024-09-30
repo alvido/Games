@@ -33,59 +33,6 @@ main {
     overflow: hidden;
 }
 
-aside.sidebar {
-    min-width: 72px;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    max-width: 280px;
-    border-right: 1px solid #D8D8D82A;
-    transition-duration: var(--transition-duration);
-
-    &.active {
-        min-width: 280px;
-
-        & span {
-            font-size: inherit;
-            margin-left: 8px;
-            width: auto;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        & footer {
-            border-top: 1px solid #D8D8D82A;
-
-            & a,
-            & p {
-                font-size: 14px;
-            }
-        }
-    }
-
-    @include hover {
-        min-width: 280px;
-
-        & span {
-            font-size: inherit;
-            margin-left: 8px;
-            width: auto;
-            opacity: 1;
-            visibility: visible;
-        }
-
-        & footer {
-            border-top: 1px solid #D8D8D82A;
-
-            & a,
-            & p {
-                font-size: 14px;
-            }
-        }
-    }
-}
-
 .content {
     flex: 1;
     padding-inline: 32px;

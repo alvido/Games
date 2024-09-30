@@ -2,6 +2,7 @@
     position: relative;
     padding: 24px 0;
     min-width: 72px;
+    overflow: auto;
 
     &__list {
         display: flex;
@@ -29,6 +30,7 @@
                 display: flex;
                 align-items: center;
                 font-size: 14px;
+                color: var(--color-white);
 
                 @include hover {
                     color: var(--color-accent);
@@ -56,6 +58,14 @@
                 opacity: 0;
                 visibility: hidden;
                 transition: font-size .3s ease;
+
+                @include mobile {
+                    font-size: inherit;
+                    margin-left: 8px;
+                    width: auto;
+                    opacity: 1;
+                    visibility: visible;
+                }
             }
         }
 

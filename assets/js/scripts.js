@@ -1,3 +1,4 @@
+//
 document.addEventListener("DOMContentLoaded", function () {
   // Выбираем элементы ссылок в меню
   let categories = document.querySelector(".categories");
@@ -18,22 +19,47 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   // Выбираем элементы ссылок в меню
   let sidebar = document.querySelector(".sidebar");
+  let body = document.querySelector("body");
+  let burgerButton = document.getElementById("burgerButton");
+  let closeSidebar = document.getElementById("closeSidebar");
 
   // Если элементы существуют, добавляем обработчик события
   if (sidebar) {
     sidebar.addEventListener("click", function (e) {
-      e.preventDefault(); // Отменяем стандартное поведение ссылки
       this.classList.add("active");
     });
 
-     // Обработчик клика по документу
-  document.addEventListener("click", function (e) {
-    // Проверяем, если клик произошел вне бургер-кнопки и навигации
-    if (!sidebar.contains(e.target)) {
-      // Убираем активные классы, если они были добавлены
-      sidebar.classList.remove("active");
+    if (burgerButton) {
+      burgerButton.addEventListener("click", function (e) {
+        e.preventDefault(); // Отменяем стандартное поведение ссылки
+
+        this.classList.add("active");
+        sidebar.classList.add("active");
+        body.classList.add("lock");
+      });
     }
-  });
+
+    if (closeSidebar) {
+      closeSidebar.addEventListener("click", function (e) {
+        e.preventDefault(); // Отменяем стандартное поведение ссылки
+
+        burgerButton.classList.remove("active");
+        sidebar.classList.remove("active");
+        body.classList.remove("lock");
+      });
+    }
+
+    // Обработчик клика по документу
+    document.addEventListener("click", function (e) {
+
+      // Проверяем, если клик произошел вне бургер-кнопки и навигации
+      if (!sidebar.contains(e.target) && !burgerButton.contains(e.target) || closeSidebar.contains(e.target)) {
+        // Убираем активные классы, если они были добавлены
+        burgerButton.classList.remove("active");
+        sidebar.classList.remove("active");
+        body.classList.remove("lock");
+      }
+    });
   }
 });
 //
@@ -59,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
       new Swiper(selector, {
         observer: true,
         observeParents: true,
-        loop: true,
+        // loop: true,
         autoplay: {
           delay: 3000,
           disableOnInteraction: false,
@@ -85,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
           },
           1024: {
             slidesPerView: 6,
-            slidesPerGroup: 2,
+            slidesPerGroup: 6,
             spaceBetween: 8,
           },
         },

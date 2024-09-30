@@ -352,77 +352,6 @@ main {
   overflow: hidden;
 }
 
-aside.sidebar {
-  min-width: 72px;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  max-width: 280px;
-  border-right: 1px solid rgba(216, 216, 216, 0.1647058824);
-  -webkit-transition-duration: var(--transition-duration);
-          transition-duration: var(--transition-duration);
-}
-aside.sidebar.active {
-  min-width: 280px;
-}
-aside.sidebar.active span {
-  font-size: inherit;
-  margin-left: 8px;
-  width: auto;
-  opacity: 1;
-  visibility: visible;
-}
-aside.sidebar.active footer {
-  border-top: 1px solid rgba(216, 216, 216, 0.1647058824);
-}
-aside.sidebar.active footer a, aside.sidebar.active footer p {
-  font-size: 14px;
-}
-@media (hover: hover) {
-  aside.sidebar:hover {
-    min-width: 280px;
-  }
-  aside.sidebar:hover span {
-    font-size: inherit;
-    margin-left: 8px;
-    width: auto;
-    opacity: 1;
-    visibility: visible;
-  }
-  aside.sidebar:hover footer {
-    border-top: 1px solid rgba(216, 216, 216, 0.1647058824);
-  }
-  aside.sidebar:hover footer a, aside.sidebar:hover footer p {
-    font-size: 14px;
-  }
-}
-@media (hover: none) {
-  aside.sidebar:active {
-    min-width: 280px;
-  }
-  aside.sidebar:active span {
-    font-size: inherit;
-    margin-left: 8px;
-    width: auto;
-    opacity: 1;
-    visibility: visible;
-  }
-  aside.sidebar:active footer {
-    border-top: 1px solid rgba(216, 216, 216, 0.1647058824);
-  }
-  aside.sidebar:active footer a, aside.sidebar:active footer p {
-    font-size: 14px;
-  }
-}
-
 .content {
   -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -1085,8 +1014,13 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
 }
 
 .header {
-  padding: 20px 0;
-  background-color: #333;
+  padding: 24px 0;
+  background: rgba(255, 255, 255, 0.05);
+}
+@media (max-width: 767px) {
+  .header {
+    padding: 16px 0;
+  }
 }
 .header.fixed {
   position: fixed;
@@ -1121,12 +1055,8 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
 }
 @media (max-width: 767px) {
   .header__search {
-    width: 60%;
-  }
-}
-@media (max-width: 560px) {
-  .header__search {
-    width: 280px;
+    width: 100%;
+    display: none;
   }
 }
 
@@ -1159,6 +1089,7 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
   position: relative;
   padding: 24px 0;
   min-width: 72px;
+  overflow: auto;
 }
 .navigation__list {
   display: -webkit-box;
@@ -1190,6 +1121,7 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
       -ms-flex-align: center;
           align-items: center;
   font-size: 14px;
+  color: var(--color-white);
 }
 @media (hover: hover) {
   .navigation__list li a:hover {
@@ -1227,6 +1159,15 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
   visibility: hidden;
   -webkit-transition: font-size 0.3s ease;
   transition: font-size 0.3s ease;
+}
+@media (max-width: 767px) {
+  .navigation__list li span {
+    font-size: inherit;
+    margin-left: 8px;
+    width: auto;
+    opacity: 1;
+    visibility: visible;
+  }
 }
 .navigation .categories__list {
   gap: 0;
@@ -1706,6 +1647,127 @@ article cite {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: var(--border-radius-small);
+}
+
+.sidebar {
+  min-width: 72px;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 280px;
+  border-right: 1px solid rgba(216, 216, 216, 0.1647058824);
+  -webkit-transition-duration: var(--transition-duration);
+          transition-duration: var(--transition-duration);
+}
+@media (max-width: 767px) {
+  .sidebar {
+    position: absolute;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    max-width: none;
+    background: -webkit-gradient(linear, left bottom, left top, from(rgba(255, 255, 255, 0.05)), to(rgba(255, 255, 255, 0.05))), -webkit-gradient(linear, left bottom, left top, from(rgba(156, 165, 236, 0.08)), to(rgba(156, 165, 236, 0.08))), var(--color-black);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05)), linear-gradient(0deg, rgba(156, 165, 236, 0.08), rgba(156, 165, 236, 0.08)), var(--color-black);
+    z-index: 2;
+  }
+  .sidebar footer {
+    margin-top: auto;
+    border-top: 1px solid rgba(216, 216, 216, 0.1647058824);
+  }
+  .sidebar footer a, .sidebar footer p {
+    font-size: 14px;
+  }
+  .sidebar.active {
+    left: 0;
+  }
+}
+.sidebar.active {
+  min-width: 280px;
+}
+.sidebar.active span {
+  font-size: inherit;
+  margin-left: 8px;
+  width: auto;
+  opacity: 1;
+  visibility: visible;
+}
+.sidebar.active footer {
+  border-top: 1px solid rgba(216, 216, 216, 0.1647058824);
+}
+.sidebar.active footer a, .sidebar.active footer p {
+  font-size: 14px;
+}
+@media (hover: hover) {
+  .sidebar:hover {
+    min-width: 280px;
+  }
+  .sidebar:hover span {
+    font-size: inherit;
+    margin-left: 8px;
+    width: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+  .sidebar:hover footer {
+    border-top: 1px solid rgba(216, 216, 216, 0.1647058824);
+  }
+  .sidebar:hover footer a, .sidebar:hover footer p {
+    font-size: 14px;
+  }
+}
+@media (hover: none) {
+  .sidebar:active {
+    min-width: 280px;
+  }
+  .sidebar:active span {
+    font-size: inherit;
+    margin-left: 8px;
+    width: auto;
+    opacity: 1;
+    visibility: visible;
+  }
+  .sidebar:active footer {
+    border-top: 1px solid rgba(216, 216, 216, 0.1647058824);
+  }
+  .sidebar:active footer a, .sidebar:active footer p {
+    font-size: 14px;
+  }
+}
+.sidebar__top {
+  display: none;
+  padding: 12px 20px;
+}
+@media (max-width: 767px) {
+  .sidebar__top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    gap: 16px;
+  }
+  .sidebar__top .header__search {
+    display: block;
+  }
 }
 
 .footer {
