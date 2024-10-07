@@ -13,6 +13,16 @@
         margin-block: 0 !important;
         border-radius: 8px;
         overflow: hidden;
+        max-width: 250px;
+
+        @include tablet {
+            max-width: 350px;
+        }
+
+        & a {
+            display: flex;
+            height: 100%;
+        }
 
         & img {
             width: 100%;

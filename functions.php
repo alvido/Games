@@ -6,9 +6,8 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('gstatic', 'https://fonts.gstatic.com');
     wp_enqueue_style('fonts', 'https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-    wp_enqueue_style('select2.css', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css');
-    wp_enqueue_style('swiper.css', 'https://cdn.jsdelivr.net/npm/swiper@11.1.4/swiper-bundle.min.css');
-
+    wp_enqueue_style('swiper-style', get_stylesheet_directory_uri() . '/assets/css/swiper-bundle.min.css');
+    wp_enqueue_style('select2-style', get_stylesheet_directory_uri() . '/assets/css/select2.min.css');
     wp_enqueue_style('main-style', get_stylesheet_directory_uri() . '/assets/css/style.css');
 
     // Дерегистрация встроенной jQuery и регистрация пользовательской версии
@@ -16,16 +15,27 @@ add_action('wp_enqueue_scripts', function () {
     wp_register_script('jquery', get_stylesheet_directory_uri() . '/assets/js/jquery.min.js', array(), null, true);
     wp_enqueue_script('jquery');
 
-    wp_enqueue_script('select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), null, true);
-    wp_enqueue_script('swiper.js', 'https://cdn.jsdelivr.net/npm/swiper@11.1.4/swiper-bundle.min.js', array('jquery'), null, true);
-
-    wp_enqueue_script('custom', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), null, true);
-
+    wp_enqueue_script('swiper-script', get_stylesheet_directory_uri() . '/assets/js/swiper-bundle.min.js', array('jquery'), null, true);
+    wp_enqueue_script('select2-script', get_stylesheet_directory_uri() . '/assets/js/select2.min.js', array('jquery'), null, true);
+    wp_enqueue_script('main-script', get_stylesheet_directory_uri() . '/assets/js/scripts.js', array('jquery'), null, true);
 
 });
+
+function enqueue_filter_script()
+{
+    wp_enqueue_script('custom-filter', get_stylesheet_directory_uri() . '/assets/js/filter.js', array('jquery'), null, true);
+
+    // Локализация скрипта для передачи переменной ajaxurl
+    wp_localize_script('custom-filter', 'ajaxurl', admin_url('admin-ajax.php'));
+}
+add_action('wp_enqueue_scripts', 'enqueue_filter_script');
+
 // Добавление скриптов и стилей
 
-
+function dorobalo_dumb($data)
+{
+    echo "<pre>" . print_r($data, 1) . "</pre>";
+}
 // Support
 add_theme_support('post-thumbnails');
 add_theme_support('title-tag');
@@ -367,3 +377,142 @@ function add_media_uploader_script()
 add_action('admin_footer', 'add_media_uploader_script');
 
 //
+
+
+
+//
+// Добавление мета-поля "Featured" для типа постов "games"
+function add_featured_meta_box()
+{
+    add_meta_box(
+        'featured_game',
+        'Featured Game',
+        'display_featured_meta_box',
+        'games',
+        'side',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'add_featured_meta_box');
+
+function display_featured_meta_box($post)
+{
+    $is_featured = get_post_meta($post->ID, 'is_featured', true);
+    ?>
+    <label for="is_featured">Is Featured?</label>
+    <input type="checkbox" name="is_featured" value="1" <?php checked($is_featured, 1); ?> />
+    <?php
+}
+
+// Сохранение значения поля
+function save_featured_meta_box($post_id)
+{
+    if (array_key_exists('is_featured', $_POST)) {
+        update_post_meta($post_id, 'is_featured', $_POST['is_featured']);
+    } else {
+        delete_post_meta($post_id, 'is_featured');
+    }
+}
+add_action('save_post', 'save_featured_meta_box');
+//
+
+
+// Добавление мета-поля "Popularity Score" для типа постов "games"
+function add_popularity_meta_box()
+{
+    add_meta_box(
+        'popularity_score',
+        'Popularity Score',
+        'display_popularity_meta_box',
+        'games',
+        'side',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'add_popularity_meta_box');
+
+function display_popularity_meta_box($post)
+{
+    $popularity = get_post_meta($post->ID, 'popularity_score', true);
+    ?>
+    <label for="popularity_score">Popularity Score:</label>
+    <input type="number" name="popularity_score" value="<?php echo esc_attr($popularity); ?>" />
+    <?php
+}
+
+// Сохранение значения поля
+function save_popularity_meta_box($post_id)
+{
+    if (array_key_exists('popularity_score', $_POST)) {
+        update_post_meta($post_id, 'popularity_score', $_POST['popularity_score']);
+    }
+}
+add_action('save_post', 'save_popularity_meta_box');
+//
+
+
+//filter games
+function filter_games()
+{
+    $filter = isset($_POST['filter']) ? sanitize_text_field($_POST['filter']) : '';
+    $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : '';
+
+    // Базовые параметры WP_Query
+    $args = array(
+        'post_type' => 'games',
+        'posts_per_page' => -1, // Выводим все посты
+        'tax_query' => array(
+            array(
+                'taxonomy' => '', // Укажите вашу таксономию
+                'field' => 'term_id',
+                'terms' => $category_id,
+            ),
+        ),
+    );
+
+    // Обрабатываем фильтр
+    if ($filter === 'new') {
+        $args['orderby'] = 'date';
+        $args['order'] = 'DESC';
+    } elseif ($filter === 'featured') {
+        // Фильтрация по метаполю 'is_featured'
+        $args['meta_query'] = array(
+            array(
+                'key' => 'is_featured',
+                'value' => '1',
+                'compare' => '='
+            )
+        );
+    }
+
+    // Выполняем запрос
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) {
+        while ($query->have_posts()) {
+            $query->the_post();
+            ?>
+            <li>
+                <a href="<?php the_permalink(); ?>">
+                    <?php if (has_post_thumbnail()): ?>
+                        <img src="<?php the_post_thumbnail_url('medium'); ?>" alt="<?php the_title(); ?>">
+                    <?php else: ?>
+                        <img src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/default-game.png'); ?>"
+                            alt="<?php the_title(); ?>">
+                    <?php endif; ?>
+                </a>
+            </li>
+            <?php
+        }
+    } else {
+        echo '<li>No games found.</li>';
+    }
+
+    wp_reset_postdata();
+    wp_die(); // Завершаем запрос
+}
+
+add_action('wp_ajax_filter_games', 'filter_games'); // Для авторизованных пользователей
+add_action('wp_ajax_nopriv_filter_games', 'filter_games'); // Для неавторизованных пользователей
+
+//filter games

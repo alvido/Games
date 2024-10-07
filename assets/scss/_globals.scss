@@ -27,7 +27,7 @@ main {
     margin: 0 auto;
     width: 100%;
     max-width: var(--container-width);
-    min-height: 600px;
+    min-height: 100vh;
     flex: 1;
     display: flex;
     overflow: hidden;
@@ -77,8 +77,9 @@ h2 {
 }
 
 h3 {
-    @include fluid-text(24, 20);
-    font-weight: 500
+    @include fluid-text(18, 16);
+    font-weight: 500;
+    color: var(--color-white);
 }
 
 h4 {

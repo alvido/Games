@@ -101,17 +101,14 @@ document.addEventListener("DOMContentLoaded", function () {
         breakpoints: {
           320: {
             slidesPerView: 2,
-            slidesPerGroup: 2,
             spaceBetween: 8,
           },
           768: {
             slidesPerView: 3,
-            slidesPerGroup: 3,
             spaceBetween: 8,
           },
           1024: {
             slidesPerView: 6,
-            slidesPerGroup: 6,
             spaceBetween: 8,
           },
         },
@@ -164,9 +161,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Инициализация слайдеров для других секций
-  initSwiper("#popular", "", ".popular-button-next", ".popular-button-prev");
-  initSwiper("#multiplayer", "", ".multiplayer-button-next", ".multiplayer-button-prev");
-  initSwiper("#io", "", ".io-button-next", ".io-button-prev");
+  
+  if (document.querySelector("#io")) {
+    initSwiper("#io", "", ".io-button-next", ".io-button-prev");
+  }
+  if (document.querySelector("#popular")) {
+    initSwiper("#popular", "", ".popular-button-next", ".popular-button-prev");
+  }
+  if (document.querySelector("#multiplayer")) {
+    initSwiper("#multiplayer", "", ".multiplayer-button-next", ".multiplayer-button-prev");
+  }
+
 });
 
 // swiper

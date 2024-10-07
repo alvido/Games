@@ -342,7 +342,7 @@ main {
   margin: 0 auto;
   width: 100%;
   max-width: var(--container-width);
-  min-height: 600px;
+  min-height: 100vh;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -403,8 +403,9 @@ h2 {
 }
 
 h3 {
-  font-size: clamp(20px, 1.6666666667vw, 24px);
+  font-size: clamp(16px, 1.25vw, 18px);
   font-weight: 500;
+  color: var(--color-white);
 }
 
 h4 {
@@ -882,6 +883,18 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
   margin-block: 0 !important;
   border-radius: 8px;
   overflow: hidden;
+  max-width: 250px;
+}
+@media (max-width: 1023px) {
+  .swiper-slide {
+    max-width: 350px;
+  }
+}
+.swiper-slide a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 .swiper-slide img {
   width: 100%;
@@ -1277,6 +1290,7 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
      object-fit: cover;
 }
 .games__description {
+  margin-top: 40px;
   padding: 32px;
   margin-bottom: 80px;
   background: rgba(156, 165, 236, 0.1215686275);
@@ -1317,7 +1331,7 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
       -ms-flex-align: center;
           align-items: center;
   gap: 16px;
-  padding: 40px 0;
+  margin-top: 40px;
 }
 @media (max-width: 560px) {
   .buttons {
@@ -1341,7 +1355,7 @@ form .custom-checkbox input[type=checkbox]:checked + .checkmark::after {
 }
 
 .pagination {
-  padding: 40px 0;
+  margin-top: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1480,19 +1494,19 @@ article cite {
   margin-top: 16px;
 }
 
-.single {
+.single__post {
   margin: 32px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 40px;
 }
-.single .game {
+.single__post .game {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
-.single .game__block {
+.single__post .game__block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1503,8 +1517,9 @@ article cite {
   height: 560px;
   border-radius: 8px;
   border: 1px solid rgba(216, 216, 216, 0.1019607843);
+  overflow: hidden;
 }
-.single .game__block .top {
+.single__post .game__block .top {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1524,11 +1539,10 @@ article cite {
   position: relative;
   z-index: 1;
   color: var(--color-white);
-  background: url(../images/single.png) no-repeat center;
   background-size: cover;
   overflow: hidden;
 }
-.single .game__block .top::after {
+.single__post .game__block .top::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -1536,17 +1550,21 @@ article cite {
   opacity: 0.8;
   z-index: -1;
 }
-.single .game__block .top h1 {
+.single__post .game__block .top h1 {
   margin: 16px 0;
   font-size: 24px;
 }
-.single .game__block .top .button {
+.single__post .game__block .top .button {
   position: static;
   min-width: 200px;
   font-size: 20px;
   border-radius: var(--border-radius-large);
 }
-.single .game__block .bottom {
+.single__post .game__block .top iframe {
+  width: 100%;
+  height: 100%;
+}
+.single__post .game__block .bottom {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1562,34 +1580,34 @@ article cite {
   background: -webkit-gradient(linear, left bottom, left top, from(rgba(156, 165, 236, 0.08)), to(rgba(156, 165, 236, 0.08))), -webkit-gradient(linear, left bottom, left top, from(#000000), to(#000000));
   background: linear-gradient(0deg, rgba(156, 165, 236, 0.08), rgba(156, 165, 236, 0.08)), linear-gradient(0deg, #000000, #000000);
 }
-.single .game__list {
+.single__post .game__list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px 8px;
 }
-.single .game__list img {
+.single__post .game__list img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: var(--border-radius-small);
 }
-.single .banner {
+.single__post .banner {
   padding: 16px 0;
 }
-.single .banner img {
+.single__post .banner img {
   width: 100%;
   max-height: 120px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: var(--border-radius-small);
 }
-.single .dark-bg {
+.single__post .dark-bg {
   margin: 16px 0;
 }
-.single article {
+.single__post article {
   margin: 0;
 }
-.single .categories__list {
+.single__post .categories__list {
   padding: 0;
   margin-bottom: 0;
   display: -webkit-box;
@@ -1602,7 +1620,7 @@ article cite {
       flex-wrap: wrap;
   gap: 16px;
 }
-.single .categories__list li a {
+.single__post .categories__list li a {
   padding: 16px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1620,29 +1638,29 @@ article cite {
   border-radius: 50px;
 }
 @media (hover: hover) {
-  .single .categories__list li a:hover {
+  .single__post .categories__list li a:hover {
     color: var(--color-accent);
   }
 }
 @media (hover: none) {
-  .single .categories__list li a:active {
+  .single__post .categories__list li a:active {
     color: var(--color-accent);
   }
 }
-.single .aside {
+.single__post .aside {
   width: 30%;
   max-width: 400px;
 }
-.single .aside__list {
+.single__post .aside__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px 8px;
 }
-.single .aside__list li:nth-child(5) {
+.single__post .aside__list li:nth-child(5) {
   grid-column: span 2;
   grid-row: span 2;
 }
-.single .aside__list li img {
+.single__post .aside__list li img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
