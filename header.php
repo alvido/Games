@@ -6,7 +6,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
  *
- * @package businnesdrive
+ * @package juegos
  */
 
 ?>
@@ -27,7 +27,7 @@
     <?php wp_body_open(); ?>
     <div id="page" class="site">
         <a class="skip-link screen-reader-text"
-            href="#primary"><?php esc_html_e('Skip to content', 'businnesdrive'); ?></a>
+            href="#primary"><?php esc_html_e('Skip to content', 'juegos'); ?></a>
 
         <header id="masthead" class="header site-header <?php if (is_front_page())
             echo 'home'; ?>">
@@ -60,8 +60,10 @@
                 endif; ?>
 
                 <div class="header__search search">
-                    <form method="get" class="search__form" id="search" role="search" action="">
-                        <input type="search" class="search__field" placeholder="Search" value="" name="s">
+                    <form class="search__form" role="search" method="get"
+                        action="<?php echo esc_url(home_url('/')); ?>">
+                        <input class="search__field" type="text" name="s" id="s"
+                            placeholder="<?php _e('Search', 'juegos') ?>" />
                         <button class="search__submit icon" id="searchButton" type="submit">
                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -72,6 +74,8 @@
                         </button>
                     </form>
                 </div>
+
+
 
 
                 <button class="header__burger burger" id="burgerButton" aria-controls="primary-menu"

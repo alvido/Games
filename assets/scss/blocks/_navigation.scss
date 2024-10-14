@@ -10,8 +10,16 @@
         gap: 16px;
 
         & li {
-            &.active {
-                &>a {
+
+            & a {
+                position: relative;
+                padding: 0 24px;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                color: var(--color-white);
+
+                &.active {
                     padding-block: 10px;
                     font-weight: 800;
                     font-size: 16px;
@@ -22,15 +30,6 @@
                         height: 100%;
                     }
                 }
-            }
-
-            & a {
-                position: relative;
-                padding: 0 24px;
-                display: flex;
-                align-items: center;
-                font-size: 14px;
-                color: var(--color-white);
 
                 @include hover {
                     color: var(--color-accent);

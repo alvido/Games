@@ -35,7 +35,7 @@
     width: 16px;
     height: 16px;
     top: 50%;
-    right: 24px;
+    right: 16px;
     translate: 0 -50%;
     transition: all .3s ease;
 
@@ -59,4 +59,9 @@
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--single,
 .select2-container--default.select2-container--open.select2-container--below .select2-selection--multiple {
     border-color: var(--color-accent);
+}
+
+.select2-container--open .select2-dropdown--below {
+    border: none;
+    margin-top: 32px;
 }

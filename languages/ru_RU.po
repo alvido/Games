@@ -1,0 +1,306 @@
+# Copyright (C) 2020 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: _s 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
+"POT-Creation-Date: 2024-10-12 15:41+0200\n"
+"PO-Revision-Date: 2024-10-12 15:41+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: _s\n"
+"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_html__\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: archive.php:66
+msgid "Games Catalog"
+msgstr "Каталог Игр"
+
+#: archive.php:67 front-page.php:18
+msgid "Try it NOW!"
+msgstr "Попробуй Сейчас!"
+
+#: archive.php:74 sidebar.php:111 taxonomy.php:82
+msgid "New Games"
+msgstr "Новые Игры"
+
+#: archive.php:77 front-page.php:19 sidebar.php:123 taxonomy.php:85
+msgid "Featured Games"
+msgstr "Избранные игры"
+
+#: archive.php:80 sidebar.php:135 taxonomy.php:88
+msgid "Trending now"
+msgstr "Сейчас в тренде"
+
+#: archive.php:83 front-page.php:64 sidebar.php:156 taxonomy.php:91
+msgid "Popular Games"
+msgstr "Популярные игры"
+
+#: archive.php:106 front-page.php:47 front-page.php:92 front-page.php:164
+#: single.php:162 single.php:312 taxonomy.php:114
+msgid "No Games"
+msgstr "Игры не найдены"
+
+#: archive.php:121 search.php:71 taxonomy.php:129
+msgid "Previous"
+msgstr "Предыдущая"
+
+#: archive.php:122 search.php:72 taxonomy.php:130
+msgid "Next"
+msgstr "Следующая"
+
+#: front-page.php:21 front-page.php:66 front-page.php:129
+msgid "All Games"
+msgstr "Все Игры"
+
+#: front-page.php:63
+msgid "Community Choice"
+msgstr "Выбор сообщества"
+
+#: front-page.php:203
+msgid "Random game"
+msgstr "Случайная игра"
+
+#: front-page.php:208
+msgid "Back to top"
+msgstr "Вернуться наверх"
+
+#: functions.php:64
+msgid "Header Menu"
+msgstr "Меню Хедера"
+
+#: functions.php:65
+msgid "Language Menu"
+msgstr "Меню Выбора Языка"
+
+#: functions.php:66
+msgid "Footer Menu"
+msgstr "Меню Футера"
+
+#: functions.php:77
+msgid "Header Logo"
+msgstr "Логотип Хедера"
+
+#: functions.php:86
+msgid "Footer Logo"
+msgstr "Логотип Футера"
+
+#: functions.php:146
+msgid "Games"
+msgstr "Игры"
+
+#: functions.php:147
+msgid "Game"
+msgstr "Игра"
+
+#: functions.php:166
+msgid "Games Categories"
+msgstr "Категории Игр"
+
+#: functions.php:167
+msgid "Game Category"
+msgstr "Категория Игры"
+
+#: functions.php:189 functions.php:197
+msgid "Tags"
+msgstr "Теги"
+
+#: functions.php:190
+msgid "Tag"
+msgstr "Тег"
+
+#: functions.php:191
+msgid "Search Tags"
+msgstr "Поиск тегов"
+
+#: functions.php:192
+msgid "All Tags"
+msgstr "Все теги"
+
+#: functions.php:193
+msgid "Edit Tag"
+msgstr "Редактировать тег"
+
+#: functions.php:194
+msgid "Update Tag"
+msgstr "Обновить тег"
+
+#: functions.php:195
+msgid "Add New Tag"
+msgstr "Добавить новый тег"
+
+#: functions.php:196
+msgid "New Tag Name"
+msgstr "Новое имя тега"
+
+#: functions.php:222
+msgid "Sidebar"
+msgstr "Боковая панель"
+
+#: functions.php:224
+msgid "Sidebar navigation"
+msgstr "Боковая панель навигации"
+
+#: functions.php:231
+msgid "Footer contact"
+msgstr "Контакты Футера"
+
+#: functions.php:233
+msgid "Widgets for the footer"
+msgstr "Виджеты для Футера"
+
+#: functions.php:257
+msgid "Please choose an option"
+msgstr "Пожалуйста, выберите вариант"
+
+#: functions.php:271 functions.php:288
+msgid "Category Image"
+msgstr "Изображение Категории"
+
+#: functions.php:274 functions.php:297
+msgid "Upload/Add Image"
+msgstr "Загрузить/Добавить изображение"
+
+#: functions.php:275 functions.php:299
+msgid "Remove Image"
+msgstr "Удалить изображение"
+
+#: functions.php:276 functions.php:300
+msgid "Select an image for this category."
+msgstr "Выберите изображение для этой категории."
+
+#: functions.php:320
+msgid "Image"
+msgstr "Изображение"
+
+#: functions.php:332
+msgid "No Image"
+msgstr "Нет изображения"
+
+#: header.php:30
+msgid "Skip to content"
+msgstr "Перейти к содержанию"
+
+#: header.php:66 search.php:36 sidebar.php:62
+#: template-parts/content-none.php:40 template-parts/content-none.php:61
+msgid "Search"
+msgstr "Поиск"
+
+#: search.php:29
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Результаты поиска: %s"
+
+#: sidebar.php:44 single.php:168 single.php:205
+msgid "No Categories"
+msgstr "Нет Категорий"
+
+#: sidebar.php:99
+msgid "Home"
+msgstr "Главная"
+
+#: sidebar.php:168
+msgid "Categories"
+msgstr "Категории"
+
+#: template-parts/content-none.php:12
+msgid "Nothing Found"
+msgstr "Ничего не найдено"
+
+#: template-parts/content-none.php:21
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"Готовы опубликовать свой первый пост? <a href=\"%1$s\">Начните здесь</a>."
+
+#: template-parts/content-none.php:35
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Извините, но ничего не соответствует вашим поисковым запросам. Попробуйте "
+"еще раз с другими ключевыми словами."
+
+#: template-parts/content-none.php:56
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Кажется, мы не можем найти то, что вы ищите. Возможно, поиск может помочь."
+
+#~ msgid "Try them NOW!"
+#~ msgstr "Попробуй Сейчас!"
+
+#~ msgid "Featured games"
+#~ msgstr "Избранные игры"
+
+#~ msgid "to play with friends"
+#~ msgstr "играть с друзьями"
+
+#~ msgid "Multiplayer games"
+#~ msgstr "Многопользовательские игры"
+
+#~ msgid "Top category"
+#~ msgstr "ТОП категория"
+
+#~ msgid ".io games"
+#~ msgstr ".io игры"
+
+#~ msgid "Category"
+#~ msgstr "Категория"
+
+#~ msgid "Archive"
+#~ msgstr "Архив"
+
+#~ msgid "No Games Found"
+#~ msgstr "Не найдено ни одной рекомендуемой игры"
+
+#~ msgid "Top Games"
+#~ msgstr "Лучшие игры"
+
+#~ msgid "Recently Played"
+#~ msgstr "Недавно сыграно"
+
+#~ msgid "No Featured Games Found"
+#~ msgstr "Не найдено ни одной рекомендуемой игры"
+
+#~ msgid "home"
+#~ msgstr "Главная"
+
+#~ msgid "No Featured Games"
+#~ msgstr "Нет Избранных Игр"
+
+#~ msgid "No Popular Games"
+#~ msgstr "Нет популярных игр"
+
+#~ msgid "No games found in this category."
+#~ msgstr "В этой категории игр не найдено."
+
+#, fuzzy
+#~| msgid "No Games Found"
+#~ msgid "No games found."
+#~ msgstr "Не найдено ни одной рекомендуемой игры"
+
+#, fuzzy
+#~| msgid "No Featured Games Found"
+#~ msgid "No featured games found."
+#~ msgstr "Не найдено ни одной рекомендуемой игры"
+
+#~ msgid "New Posts"
+#~ msgstr "Новый посты"
+
+#~ msgid "Featured Posts"
+#~ msgstr "Избранные посты"
+
+#~ msgid "Popular games"
+#~ msgstr "Популярные игры"
+
+#~ msgid "Пошук Результатів за:"
+#~ msgstr "Результаты поиска по запросу:"

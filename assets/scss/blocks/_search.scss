@@ -1,5 +1,14 @@
 .search {
 
+    &__section {
+        margin: 40px 0;
+
+
+        & .search {
+            margin: 20px 0;
+        }
+    }
+
     &__form {
         position: relative;
     }
@@ -17,5 +26,14 @@
         top: 50%;
         right: 24px;
         transform: translate(0, -50%);
+    }
+
+    & h1 {
+        color: var(--color-white);
+
+        & span {
+            color: var(--color-accent);
+            text-transform: uppercase;
+        }
     }
 }

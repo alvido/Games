@@ -1,10 +1,20 @@
-.single__post {
+.single__game {
+    position: relative;
     margin: 32px 0;
     display: flex;
-    gap: 40px;
+    gap: clamp(0.625rem, -3.99rem + 7.21vw, 2.5rem);
+
+    @include tablet {
+        flex-direction: column;
+    }
 
     & .game {
         flex: 1;
+
+        @include mobile {
+            display: flex;
+            flex-direction: column;
+        }
 
         &__block {
             display: flex;
@@ -13,6 +23,12 @@
             border-radius: 8px;
             border: 1px solid #D8D8D81A;
             overflow: hidden;
+
+            @include mobile {
+                order: 1;
+                height: auto;
+                margin-bottom: 40px
+            }
 
             & .top {
                 @include flex-center;
@@ -48,6 +64,7 @@
                 & iframe {
                     width: 100%;
                     height: 100%;
+                    min-height: 400px;
                 }
             }
 
@@ -60,6 +77,15 @@
                 color: var(--color-white);
                 background: linear-gradient(0deg, rgba(156, 165, 236, 0.08), rgba(156, 165, 236, 0.08)), linear-gradient(0deg, #000000, #000000);
 
+                @include mobile {
+                    justify-content: center;
+
+                    & h3,
+                    & #fullscreen-btn,
+                    & #theatre-mode-btn {
+                        display: none;
+                    }
+                }
             }
         }
 
@@ -68,8 +94,47 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 16px 8px;
 
+            @include mobile {
+                grid-template-columns: repeat(2, 1fr);
+
+                &.same-categories {
+                    order: 2;
+                }
+
+                &.more-like {
+                    order: 4;
+                }
+            }
+
+            & li {
+                border-radius: var(--border-radius-small);
+                overflow: hidden;
+            }
+
+            & a {
+                position: relative;
+                @include flex-center;
+                height: 100%;
+
+                @include hover {
+                    &::after {
+                        opacity: 0.6;
+                    }
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    inset: 0;
+                    background: var(--color-accent);
+                    opacity: 0;
+                    transition-duration: var(--transition-duration);
+                }
+            }
+
             & img {
                 width: 100%;
+                height: 100%;
                 object-fit: cover;
                 border-radius: var(--border-radius-small);
             }
@@ -79,9 +144,34 @@
     & .banner {
         padding: 16px 0;
 
+        @include mobile {
+            order: 3;
+        }
+
+        & a {
+            position: relative;
+            @include flex-center;
+            height: 100%;
+
+            @include hover {
+                &::after {
+                    opacity: 0.6;
+                }
+            }
+
+            &::after {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: var(--color-accent);
+                opacity: 0;
+                transition-duration: var(--transition-duration);
+            }
+        }
+
         & img {
             width: 100%;
-            max-height: 120px;
+            min-height: 120px;
             object-fit: cover;
             border-radius: var(--border-radius-small);
         }
@@ -89,6 +179,10 @@
 
     & .dark-bg {
         margin: 16px 0;
+
+        @include mobile {
+            order: 5;
+        }
     }
 
     & article {
@@ -105,7 +199,7 @@
 
         & li {
             & a {
-                padding: 16px;
+                padding: 12px 16px;
                 @include flex-center;
                 gap: 8px;
                 font-weight: 800;
@@ -116,6 +210,10 @@
                 @include hover {
                     color: var(--color-accent);
                 }
+
+                @include mobile {
+                    font-size: 14px;
+                }
             }
         }
     }
@@ -124,19 +222,74 @@
         width: 30%;
         max-width: 400px;
 
+        @include tablet {
+            width: 100%;
+            max-width: none;
+        }
+
         &__list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 16px 8px;
 
+            @include tablet {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            @include mobile {
+                grid-template-columns: repeat(2, 1fr);
+
+            }
+
+
+
             & li {
+                border-radius: var(--border-radius-small);
+                overflow: hidden;
+                max-height: 200px;
+
                 &:nth-child(5) {
                     grid-column: span 2;
                     grid-row: span 2;
+
+                    @include tablet {
+                        grid-column: span 3;
+                        grid-row: span 3;
+                        max-height: 400px;
+                    }
+
+
+                    @include mobile {
+                        grid-column: span 2;
+                        grid-row: span 2;
+                        max-height: 300px;
+                    }
+                }
+
+                & a {
+                    position: relative;
+                    @include flex-center;
+                    height: 100%;
+
+                    @include hover {
+                        &::after {
+                            opacity: 0.6;
+                        }
+                    }
+
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        inset: 0;
+                        background: var(--color-accent);
+                        opacity: 0;
+                        transition-duration: var(--transition-duration);
+                    }
                 }
 
                 & img {
                     width: 100%;
+                    height: 100%;
                     object-fit: cover;
                     border-radius: var(--border-radius-small);
                 }

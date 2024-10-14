@@ -1,0 +1,241 @@
+# Copyright (C) 2020 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: _s 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
+"POT-Creation-Date: 2024-10-12 15:41+0200\n"
+"PO-Revision-Date: 2024-10-12 15:41+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Domain: _s\n"
+"X-Poedit-KeywordsList: __;_e;esc_html__;esc_html_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: archive.php:66
+msgid "Games Catalog"
+msgstr "Catálogo de juegos"
+
+#: archive.php:67 front-page.php:18
+msgid "Try it NOW!"
+msgstr "Pruébalo ahora!"
+
+#: archive.php:74 sidebar.php:111 taxonomy.php:82
+msgid "New Games"
+msgstr "Nuevos"
+
+#: archive.php:77 front-page.php:19 sidebar.php:123 taxonomy.php:85
+msgid "Featured Games"
+msgstr "Juegos favoritos"
+
+#: archive.php:80 sidebar.php:135 taxonomy.php:88
+msgid "Trending now"
+msgstr "De moda"
+
+#: archive.php:83 front-page.php:64 sidebar.php:156 taxonomy.php:91
+msgid "Popular Games"
+msgstr "Juegos populares"
+
+#: archive.php:106 front-page.php:47 front-page.php:92 front-page.php:164
+#: single.php:162 single.php:312 taxonomy.php:114
+msgid "No Games"
+msgstr "Sin juegos"
+
+#: archive.php:121 search.php:71 taxonomy.php:129
+msgid "Previous"
+msgstr "Previa"
+
+#: archive.php:122 search.php:72 taxonomy.php:130
+msgid "Next"
+msgstr "Próxima"
+
+#: front-page.php:21 front-page.php:66 front-page.php:129
+msgid "All Games"
+msgstr "Todos los juegos"
+
+#: front-page.php:63
+msgid "Community Choice"
+msgstr "Elección de la comunidad"
+
+#: front-page.php:203
+msgid "Random game"
+msgstr "Juego aleatorio"
+
+#: front-page.php:208
+msgid "Back to top"
+msgstr "Volver al inicio"
+
+#: functions.php:64
+msgid "Header Menu"
+msgstr "Menú de encabezado"
+
+#: functions.php:65
+msgid "Language Menu"
+msgstr "Menú de idioma"
+
+#: functions.php:66
+msgid "Footer Menu"
+msgstr "Menú de pie de página"
+
+#: functions.php:77
+msgid "Header Logo"
+msgstr "Logotipo del encabezado"
+
+#: functions.php:86
+msgid "Footer Logo"
+msgstr "Logotipo de pie de página"
+
+#: functions.php:146
+msgid "Games"
+msgstr "Juegos"
+
+#: functions.php:147
+msgid "Game"
+msgstr "Juego"
+
+#: functions.php:166
+msgid "Games Categories"
+msgstr "Categorías de juegos"
+
+#: functions.php:167
+msgid "Game Category"
+msgstr "Categoría del juego"
+
+#: functions.php:189 functions.php:197
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: functions.php:190
+msgid "Tag"
+msgstr "Etiqueta"
+
+#: functions.php:191
+msgid "Search Tags"
+msgstr "Buscar etiquetas"
+
+#: functions.php:192
+msgid "All Tags"
+msgstr "Todas las etiquetas"
+
+#: functions.php:193
+msgid "Edit Tag"
+msgstr "Editar etiqueta"
+
+#: functions.php:194
+msgid "Update Tag"
+msgstr "Actualizar etiqueta"
+
+#: functions.php:195
+msgid "Add New Tag"
+msgstr "Agregar nueva etiqueta"
+
+#: functions.php:196
+msgid "New Tag Name"
+msgstr "Nuevo nombre de etiqueta"
+
+#: functions.php:222
+msgid "Sidebar"
+msgstr "Barra lateral"
+
+#: functions.php:224
+msgid "Sidebar navigation"
+msgstr "Navegación de la barra lateral"
+
+#: functions.php:231
+msgid "Footer contact"
+msgstr "Contacto de pie de página"
+
+#: functions.php:233
+msgid "Widgets for the footer"
+msgstr "Widgets para el pie de página"
+
+#: functions.php:257
+msgid "Please choose an option"
+msgstr "Por favor seleccione una opción"
+
+#: functions.php:271 functions.php:288
+msgid "Category Image"
+msgstr "Categoría Imagen"
+
+#: functions.php:274 functions.php:297
+msgid "Upload/Add Image"
+msgstr "Subir/Agregar imagen"
+
+#: functions.php:275 functions.php:299
+msgid "Remove Image"
+msgstr "Eliminar imagen"
+
+#: functions.php:276 functions.php:300
+msgid "Select an image for this category."
+msgstr "Seleccione una imagen para esta categoría."
+
+#: functions.php:320
+msgid "Image"
+msgstr "Imagen"
+
+#: functions.php:332
+msgid "No Image"
+msgstr "Sin imagen"
+
+#: header.php:30
+msgid "Skip to content"
+msgstr "Saltar al contenido"
+
+#: header.php:66 search.php:36 sidebar.php:62
+#: template-parts/content-none.php:40 template-parts/content-none.php:61
+msgid "Search"
+msgstr "Buscar"
+
+#: search.php:29
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Resultados de búsqueda para: %s"
+
+#: sidebar.php:44 single.php:168 single.php:205
+msgid "No Categories"
+msgstr "Sin categorías"
+
+#: sidebar.php:99
+msgid "Home"
+msgstr "Inicio"
+
+#: sidebar.php:168
+msgid "Categories"
+msgstr "Categorías"
+
+#: template-parts/content-none.php:12
+msgid "Nothing Found"
+msgstr "No se encontró nada"
+
+#: template-parts/content-none.php:21
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"¿Estás listo para publicar tu primera entrada? <a href=\"%1$s\">Empieza "
+"aquí</a>."
+
+#: template-parts/content-none.php:35
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Lo sentimos, pero no se ha encontrado nada que coincida con tus términos de "
+"búsqueda. Vuelve a intentarlo con otras palabras clave."
+
+#: template-parts/content-none.php:56
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+"Parece que no podemos encontrar lo que estás buscando. Quizás una búsqueda "
+"pueda ayudarte."
+
+#~ msgid "Try them NOW!"
+#~ msgstr "Pruébalo ahora"

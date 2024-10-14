@@ -1,20 +1,23 @@
 //
 document.addEventListener("DOMContentLoaded", function () {
   // Выбираем элементы ссылок в меню
-  let categories = document.querySelector(".categories");
+  let menuItems = document.querySelectorAll(".menu-item > a");
+  let categories = document.querySelector(".categories > a");
   let categoriesList = document.querySelector(".categories__list");
+  if (menuItems) {
+    menuItems.forEach(item => {
+      item.addEventListener("click", function (e) {
+        menuItems.forEach(el => el.classList.remove("active"));
+      });
+    });
 
-  // Если элементы существуют, добавляем обработчик события
-  if (categories) {
     categories.addEventListener("click", function (e) {
-      e.preventDefault(); // Отменяем стандартное поведение ссылки
-
       this.classList.toggle("active");
       categoriesList.classList.toggle("active");
-
     });
   }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
   // Выбираем элементы ссылок в меню
@@ -79,55 +82,14 @@ $(document).ready(function () {
 
 //swiper
 document.addEventListener("DOMContentLoaded", function () {
-  // Функция для инициализации слайдера
-  function initSwiper(selector, paginationClass, nextButtonClass, prevButtonClass) {
-    if (document.querySelector(selector)) {
-      new Swiper(selector, {
-        observer: true,
-        observeParents: true,
-        // loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false,
-        },
-        pagination: {
-          el: paginationClass,
-          clickable: true,
-        },
-        navigation: {
-          nextEl: nextButtonClass,
-          prevEl: prevButtonClass,
-        },
-        breakpoints: {
-          320: {
-            slidesPerView: 2,
-            spaceBetween: 8,
-          },
-          768: {
-            slidesPerView: 3,
-            spaceBetween: 8,
-          },
-          1024: {
-            slidesPerView: 6,
-            spaceBetween: 8,
-          },
-        },
-      });
-    }
-  }
 
-  // Инициализация слайдеров
+  // Инициализация слайдера "Featured"
   if (document.querySelector("#featured")) {
     new Swiper("#featured", {
       observer: true,
       observeParents: true,
       loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
       pagination: {
-        // el: ".featured-pagination",
         clickable: true,
       },
       navigation: {
@@ -160,18 +122,63 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // Инициализация слайдеров для других секций
-  
-  if (document.querySelector("#io")) {
-    initSwiper("#io", "", ".io-button-next", ".io-button-prev");
-  }
-  if (document.querySelector("#popular")) {
-    initSwiper("#popular", "", ".popular-button-next", ".popular-button-prev");
-  }
-  if (document.querySelector("#multiplayer")) {
-    initSwiper("#multiplayer", "", ".multiplayer-button-next", ".multiplayer-button-prev");
+  // Функция для инициализации слайдера
+  function initSwiper(selector, paginationClass, nextButtonClass, prevButtonClass) {
+    if (document.querySelector(selector)) {
+      new Swiper(selector, {
+        observer: true,
+        observeParents: true,
+        loop: true,
+        pagination: {
+          el: paginationClass || null,
+          clickable: true,
+        },
+        navigation: {
+          nextEl: nextButtonClass,
+          prevEl: prevButtonClass,
+        },
+        breakpoints: {
+          320: {
+            slidesPerView: 2,
+            spaceBetween: 8,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 8,
+          },
+          1024: {
+            slidesPerView: 6,
+            spaceBetween: 8,
+          },
+        },
+      });
+    }
   }
 
+  // Инициализация слайдеров для других секций
+  const categories = document.querySelectorAll(".games");
+
+  categories.forEach(section => {
+    const swiperBasic = section.querySelector('.swiper-basic'); // Получаем элемент с классом swiper-basic
+
+    // Проверяем, найден ли элемент
+    if (swiperBasic) {
+      console.log('Found swiper-basic with ID:', swiperBasic.id); // Проверка ID
+      const categorySlug = swiperBasic.id; // Получаем slug категории
+      const paginationClass = null; // Пагинация не нужна для других секций
+      const nextButtonClass = `.${categorySlug}-button-next`;
+      const prevButtonClass = `.${categorySlug}-button-prev`;
+
+      initSwiper(`#${categorySlug}`, paginationClass, nextButtonClass, prevButtonClass);
+    } else {
+      console.error('swiper-basic not found in section:', section); // Лог ошибки
+    }
+  });
+
+  // Инициализация слайдера "Popular"
+  if (document.querySelector("#popular")) {
+    initSwiper("#popular", null, ".popular-button-next", ".popular-button-prev");
+  }
 });
 
 // swiper

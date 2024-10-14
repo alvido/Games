@@ -45,7 +45,24 @@
 .icon {
     @include flex-center;
     @include reset-button;
-    width: var(--icon-height);
+    min-width: var(--icon-height);
     height: var(--icon-height);
     color: var(--color-white);
+    gap: 8px;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    @include hover {
+        color: var(--color-accent);
+    }
+}
+
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    color: var(--color-white);
+
+    & svg {}
 }

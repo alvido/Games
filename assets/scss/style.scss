@@ -1,4 +1,4 @@
-@import 'normalize', 'fonts', 'veriables', 'mixins', 'media',  'utils', 'globals', 'animations';
+@import 'normalize', 'fonts', 'veriables', 'mixins', 'media', 'utils', 'globals', 'animations';
 
 @import 'blocks/button',
 'blocks/button-burger',
@@ -20,3 +20,21 @@
 
 
 'blocks/footer';
+
+
+
+
+#game-container.theatre-mode {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Обеспечивает, что контейнер будет выше других элементов */
+}
+
+#game-container.fullscreen {
+   & .bottom {
+    display: none;
+   }
+}

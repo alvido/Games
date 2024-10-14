@@ -36,6 +36,23 @@ function dorobalo_dumb($data)
 {
     echo "<pre>" . print_r($data, 1) . "</pre>";
 }
+
+function juegos_setup()
+{
+    /*
+     * Make theme available for translation.
+     * Translations can be filed in the /languages/ directory.
+     * If you're building a theme based on juegos, use a find and replace
+     * to change 'juegos' to the name of your theme in all the template files.
+     */
+    load_theme_textdomain('juegos', get_template_directory() . '/languages');
+
+    // Add default posts and comments RSS feed links to head.
+    add_theme_support('automatic-feed-links');
+}
+add_action('after_setup_theme', 'juegos_setup');
+
+
 // Support
 add_theme_support('post-thumbnails');
 add_theme_support('title-tag');
@@ -44,20 +61,20 @@ add_theme_support('custom-logo');
 
 //Nav menu
 register_nav_menus([
-    'header-menu' => 'Верхняя область',
-    'language-menu' => 'Выбор языка',
-    'footer-menu' => 'Нижняя область',
+    'header-menu' => __('Header Menu', 'juegos'),
+    'language-menu' => __('Language Menu', 'juegos'),
+    'footer-menu' => __('Footer Menu', 'juegos'),
 ]);
 //
 
 // custom logo//
-function mytheme_customize_register($wp_customize)
+function juegos_customize_register($wp_customize)
 {
     // Настройка для логотипа хедера
     $wp_customize->add_setting('header_logo');
 
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'header_logo', array(
-        'label' => __('Header Logo', 'mytheme'),
+        'label' => __('Header Logo', 'juegos'),
         'section' => 'title_tagline',
         'settings' => 'header_logo',
     )));
@@ -66,12 +83,12 @@ function mytheme_customize_register($wp_customize)
     $wp_customize->add_setting('footer_logo');
 
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'footer_logo', array(
-        'label' => __('Footer Logo', 'mytheme'),
+        'label' => __('Footer Logo', 'juegos'),
         'section' => 'title_tagline',
         'settings' => 'footer_logo',
     )));
 }
-add_action('customize_register', 'mytheme_customize_register');
+add_action('customize_register', 'juegos_customize_register');
 // custom logo//
 
 
@@ -126,8 +143,8 @@ function create_custom_post_type()
         'games',
         array(
             'labels' => array(
-                'name' => __('Games'),
-                'singular_name' => __('Game'),
+                'name' => __('Games', 'juegos'),
+                'singular_name' => __('Game', 'juegos'),
             ),
             'public' => true,
             'has_archive' => true,
@@ -146,8 +163,8 @@ add_action('init', 'create_custom_post_type');
 function create_custom_taxonomy()
 {
     $labels = array(
-        'name' => __('Games Categories'),
-        'singular_name' => __('Game Category'),
+        'name' => __('Games Categories', 'juegos'),
+        'singular_name' => __('Game Category', 'juegos'),
     );
 
     $args = array(
@@ -170,14 +187,14 @@ function add_tags_to_games()
 {
     $labels = array(
         'name' => __('Tags'),
-        'singular_name' => __('Tag'),
-        'search_items' => __('Search Tags'),
-        'all_items' => __('All Tags'),
-        'edit_item' => __('Edit Tag'),
-        'update_item' => __('Update Tag'),
-        'add_new_item' => __('Add New Tag'),
-        'new_item_name' => __('New Tag Name'),
-        'menu_name' => __('Tags'),
+        'singular_name' => __('Tag', 'juegos'),
+        'search_items' => __('Search Tags', 'juegos'),
+        'all_items' => __('All Tags', 'juegos'),
+        'edit_item' => __('Edit Tag', 'juegos'),
+        'update_item' => __('Update Tag', 'juegos'),
+        'add_new_item' => __('Add New Tag', 'juegos'),
+        'new_item_name' => __('New Tag Name', 'juegos'),
+        'menu_name' => __('Tags', 'juegos'),
     );
 
     $args = array(
@@ -251,12 +268,12 @@ function add_category_image_field($taxonomy)
 {
     ?>
     <div class="form-field">
-        <label for="category_image"><?php _e('Category Image', 'your-text-domain'); ?></label>
+        <label for="category_image"><?php _e('Category Image', 'juegos'); ?></label>
         <input type="hidden" name="category_image" id="category_image" value="">
         <div id="category-image-preview" style="margin-bottom: 10px;"></div>
-        <button class="upload_image_button button"><?php _e('Upload/Add Image', 'your-text-domain'); ?></button>
-        <button class="remove_image_button button hidden"><?php _e('Remove Image', 'your-text-domain'); ?></button>
-        <p class="description"><?php _e('Select an image for this category.', 'your-text-domain'); ?></p>
+        <button class="upload_image_button button"><?php _e('Upload/Add Image', 'juegos'); ?></button>
+        <button class="remove_image_button button hidden"><?php _e('Remove Image', 'juegos'); ?></button>
+        <p class="description"><?php _e('Select an image for this category.', 'juegos'); ?></p>
     </div>
     <?php
 }
@@ -268,7 +285,7 @@ function edit_category_image_field($term, $taxonomy)
     $image_url = get_term_meta($term->term_id, 'category_image', true);
     ?>
     <tr class="form-field">
-        <th scope="row" valign="top"><label for="category_image"><?php _e('Category Image', 'your-text-domain'); ?></label>
+        <th scope="row" valign="top"><label for="category_image"><?php _e('Category Image', 'juegos'); ?></label>
         </th>
         <td>
             <input type="hidden" name="category_image" id="category_image" value="<?php echo esc_attr($image_url); ?>">
@@ -277,10 +294,10 @@ function edit_category_image_field($term, $taxonomy)
                     <img src="<?php echo esc_url($image_url); ?>" style="max-width: 150px; height: auto;">
                 <?php } ?>
             </div>
-            <button class="upload_image_button button"><?php _e('Upload/Add Image', 'your-text-domain'); ?></button>
+            <button class="upload_image_button button"><?php _e('Upload/Add Image', 'juegos'); ?></button>
             <button
-                class="remove_image_button button <?php echo $image_url ? '' : 'hidden'; ?>"><?php _e('Remove Image', 'your-text-domain'); ?></button>
-            <p class="description"><?php _e('Select an image for this category.', 'your-text-domain'); ?></p>
+                class="remove_image_button button <?php echo $image_url ? '' : 'hidden'; ?>"><?php _e('Remove Image', 'juegos'); ?></button>
+            <p class="description"><?php _e('Select an image for this category.', 'juegos'); ?></p>
         </td>
     </tr>
     <?php
@@ -300,7 +317,7 @@ add_action('edited_categoria', 'save_category_image');
 // Добавление изображения в колонки списка категорий в админке (опционально)
 function add_category_image_column($columns)
 {
-    $columns['category_image'] = __('Image', 'your-text-domain');
+    $columns['category_image'] = __('Image', 'juegos');
     return $columns;
 }
 add_filter('manage_edit-categoria_columns', 'add_category_image_column');
@@ -312,7 +329,7 @@ function display_category_image_column($content, $column_name, $term_id)
         if ($image_url) {
             $content = '<img src="' . esc_url($image_url) . '" style="max-width: 50px; height: auto;" />';
         } else {
-            $content = __('No Image', 'your-text-domain');
+            $content = __('No Image', 'juegos');
         }
     }
     return $content;
@@ -417,40 +434,6 @@ add_action('save_post', 'save_featured_meta_box');
 //
 
 
-// Добавление мета-поля "Popularity Score" для типа постов "games"
-function add_popularity_meta_box()
-{
-    add_meta_box(
-        'popularity_score',
-        'Popularity Score',
-        'display_popularity_meta_box',
-        'games',
-        'side',
-        'high'
-    );
-}
-add_action('add_meta_boxes', 'add_popularity_meta_box');
-
-function display_popularity_meta_box($post)
-{
-    $popularity = get_post_meta($post->ID, 'popularity_score', true);
-    ?>
-    <label for="popularity_score">Popularity Score:</label>
-    <input type="number" name="popularity_score" value="<?php echo esc_attr($popularity); ?>" />
-    <?php
-}
-
-// Сохранение значения поля
-function save_popularity_meta_box($post_id)
-{
-    if (array_key_exists('popularity_score', $_POST)) {
-        update_post_meta($post_id, 'popularity_score', $_POST['popularity_score']);
-    }
-}
-add_action('save_post', 'save_popularity_meta_box');
-//
-
-
 //filter games
 function filter_games()
 {
@@ -516,3 +499,52 @@ add_action('wp_ajax_filter_games', 'filter_games'); // Для авторизов
 add_action('wp_ajax_nopriv_filter_games', 'filter_games'); // Для неавторизованных пользователей
 
 //filter games
+
+
+
+function search_filter($query)
+{
+    if ($query->is_search && !is_admin() && $query->is_main_query()) {
+        // Ограничиваем поиск только кастомным типом постов 'games'
+        $query->set('post_type', 'games');
+    }
+    return $query;
+}
+add_filter('pre_get_posts', 'search_filter');
+
+
+// likes
+// Обработка AJAX-запросов для лайков и дизлайков
+add_action('wp_ajax_handle_like_dislike', 'handle_like_dislike');
+add_action('wp_ajax_nopriv_handle_like_dislike', 'handle_like_dislike');
+
+function handle_like_dislike()
+{
+    if (isset($_POST['post_id']) && isset($_POST['action_type'])) {
+        $post_id = intval($_POST['post_id']);
+        $action_type = sanitize_text_field($_POST['action_type']);
+
+        // Получаем текущее значение лайков и дизлайков
+        $like_count = get_post_meta($post_id, 'like_count', true) ?: 0;
+        $dislike_count = get_post_meta($post_id, 'dislike_count', true) ?: 0;
+
+        // Обновляем счетчики
+        if ($action_type === 'like') {
+            $like_count++;
+            update_post_meta($post_id, 'like_count', $like_count);
+        } elseif ($action_type === 'dislike') {
+            $dislike_count++;
+            update_post_meta($post_id, 'dislike_count', $dislike_count);
+        }
+
+        // Возвращаем результат
+        wp_send_json_success(array(
+            'likes' => $like_count,
+            'dislikes' => $dislike_count,
+        ));
+    }
+
+    wp_send_json_error('Invalid request');
+}
+
+// likes
