@@ -548,3 +548,176 @@ function handle_like_dislike()
 }
 
 // likes
+
+
+// meta
+// Регистрация метабокса для вопросов и ответов
+function faq_meta_box()
+{
+    add_meta_box(
+        'faq_meta_box',       // ID метабокса
+        'FAQ Questions',      // Заголовок
+        'faq_meta_box_html',  // Функция отображения
+        'games',              // Тип записи (измените на ваш тип записи)
+        'normal',             // Позиция
+        'high'                // Приоритет
+    );
+}
+add_action('add_meta_boxes', 'faq_meta_box');
+
+// HTML для метабокса
+function faq_meta_box_html($post)
+{
+    // Получаем сохраненные вопросы и ответы
+    $faq = get_post_meta($post->ID, '_faq_data', true);
+    $faq = $faq ? json_decode($faq, true) : [];
+    $faq_url = get_post_meta($post->ID, '_faq_url', true); // URL для "@id"
+
+    ?>
+    <div id="faq-container">
+        <!-- Поле для URL -->
+        <label for="faq_url">FAQ URL</label>
+        <input type="text" id="faq_url" name="faq_url" value="<?php echo esc_url($faq_url); ?>"
+            placeholder="https://example.com/faq" style="width: 100%; margin-bottom: 15px;">
+
+        <?php foreach ($faq as $index => $item): ?>
+            <div class="faq-item">
+                <input type="text" name="faq_question[]" placeholder="<?php _e('Question', 'sportfenis'); ?>"
+                    value="<?php echo esc_attr($item['name'] ?? ''); ?>" />
+                <textarea name="faq_answer[]"
+                    placeholder="<?php _e('Answer', 'sportfenis'); ?>"><?php echo esc_textarea($item['acceptedAnswer']['text'] ?? ''); ?></textarea>
+                <button type="button" class="remove-faq" title="<?php _e('Delete question', 'sportfenis'); ?>">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path
+                            d="M170.5 51.6L151.5 80l145 0-19-28.4c-1.5-2.2-4-3.6-6.7-3.6l-93.7 0c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80 368 80l48 0 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-8 0 0 304c0 44.2-35.8 80-80 80l-224 0c-44.2 0-80-35.8-80-80l0-304-8 0c-13.3 0-24-10.7-24-24S10.7 80 24 80l8 0 48 0 13.8 0 36.7-55.1C140.9 9.4 158.4 0 177.1 0l93.7 0c18.7 0 36.2 9.4 46.6 24.9zM80 128l0 304c0 17.7 14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-304L80 128zm80 64l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+                    </svg>
+                </button>
+            </div>
+        <?php endforeach; ?>
+        <button type="button" id="add-faq" class="add-faq"><?php _e('Add question', 'sportfenix'); ?></button>
+    </div>
+
+    <script>
+        document.getElementById('add-faq').addEventListener('click', function () {
+            const container = document.getElementById('faq-container');
+            const newItem = document.createElement('div');
+            newItem.classList.add('faq-item');
+            newItem.innerHTML = `
+                    <input type="text" name="faq_question[]" placeholder="<?php _e('Question', 'sportfenis'); ?>" />
+    <textarea name="faq_answer[]" placeholder="<?php _e('Answer', 'sportfenis'); ?>"></textarea>
+    <button type="button" class="remove-faq" title="<?php _e('Delete question', 'sportfenis'); ?>">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M170.5 51.6L151.5 80l145 0-19-28.4c-1.5-2.2-4-3.6-6.7-3.6l-93.7 0c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80 368 80l48 0 8 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-8 0 0 304c0 44.2-35.8 80-80 80l-224 0c-44.2 0-80-35.8-80-80l0-304-8 0c-13.3 0-24-10.7-24-24S10.7 80 24 80l8 0 48 0 13.8 0 36.7-55.1C140.9 9.4 158.4 0 177.1 0l93.7 0c18.7 0 36.2 9.4 46.6 24.9zM80 128l0 304c0 17.7 14.3 32 32 32l224 0c17.7 0 32-14.3 32-32l0-304L80 128zm80 64l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0l0 208c0 8.8-7.2 16-16 16s-16-7.2-16-16l0-208c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+        </svg>
+    </button>
+                `;
+            container.appendChild(newItem);
+        });
+
+        document.addEventListener('click', function (e) {
+            const button = e.target.closest('.remove-faq');
+            if (button) {
+                button.parentElement.remove();
+            }
+        });
+    </script>
+    <?php
+}
+
+// Сохранение данных метабокса
+function save_faq_meta_box($post_id)
+{
+    // Проверка для защиты от нежелательного изменения данных
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
+        return;
+    if (!current_user_can('edit_post', $post_id))
+        return;
+
+    // Сохраняем URL для "@id"
+    if (isset($_POST['faq_url'])) {
+        update_post_meta($post_id, '_faq_url', esc_url_raw($_POST['faq_url']));
+    }
+
+    if (array_key_exists('faq_question', $_POST) && array_key_exists('faq_answer', $_POST)) {
+        $questions = $_POST['faq_question'];
+        $answers = $_POST['faq_answer'];
+
+        $faq = [];
+        for ($i = 0; $i < count($questions); $i++) {
+            if (!empty($questions[$i]) && !empty($answers[$i])) {
+                $faq[] = [
+                    '@type' => 'Question',
+                    'name' => sanitize_text_field($questions[$i]), // sanitize_text_field
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => wp_kses_post($answers[$i]), // wp_kses_post для текста
+                    ],
+                ];
+            }
+        }
+        update_post_meta($post_id, '_faq_data', json_encode($faq, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)); // Убедитесь, что используете JSON_UNESCAPED_UNICODE
+    }
+}
+add_action('save_post', 'save_faq_meta_box');
+
+// Стили для админки
+function faq_admin_styles()
+{
+    echo '
+    <style>
+        #faq-container {
+            margin-top: 15px;
+        }
+        .faq-item {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding-right: 40px;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .faq-item input, .faq-item textarea {
+            display: block;
+            width: 100%;
+        }
+        .remove-faq {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 30px;
+            height: 30px;
+            background-color: #dc3545;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .remove-faq:hover {
+            background-color: #c82333;
+        }
+
+        .remove-faq svg{
+            fill: #fff;
+            width: 14px;
+        }
+
+        #add-faq {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        #add-faq:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    ';
+}
+add_action('admin_head', 'faq_admin_styles');
+
+
+
+//meta

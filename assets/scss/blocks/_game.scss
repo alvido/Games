@@ -6,6 +6,12 @@
         margin-top: 24px;
     }
 
+    & h1 {
+        font-size: 20px;
+        font-weight: 800;
+        margin-bottom: 8px;
+    }
+
     & .button {
         position: absolute;
         top: 8px;
@@ -58,6 +64,7 @@
                     opacity: 0.6;
                 }
             }
+
             &::after {
                 content: '';
                 position: absolute;
@@ -84,6 +91,10 @@
 
         @include mobile {
             padding: 24px;
+        }
+
+        & h1 {
+            margin-bottom: 16px;
         }
 
         & a,
@@ -146,9 +157,14 @@
             border-radius: 24px;
             border: 2px solid var(--color-dark);
 
-            @include mobile {
+            @include tablet {
                 width: 40px;
                 height: 40px;
+            }
+
+            @include hover {
+                border-color: var(--color-accent);
+                background: var(--color-transparent);
             }
 
             &.current {
@@ -164,17 +180,23 @@
                 padding: 0 30px;
                 color: var(--color-white);
                 background: var(--color-accent);
-
+                
+                @include tablet {
+                    padding: 0 20px;
+                }
                 @include mobile {
                     font-size: 0;
                     gap: 0;
                 }
             }
 
-            @include hover {
-                border-color: var(--color-accent);
-                background: var(--color-transparent);
+            &.prev {
+                & svg {
+                    rotate: 180deg;
+                }
             }
+
+            
         }
     }
 }

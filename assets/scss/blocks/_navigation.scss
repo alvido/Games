@@ -4,6 +4,22 @@
     min-width: 72px;
     overflow: auto;
 
+    & .categories {
+        padding: 16px 24px 10px;
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        color: var(--color-white);
+
+        & span {
+            display: flex;
+            font-size: inherit;
+            margin-left: 8px;
+            width: auto;
+            transition: font-size .3s ease;
+        }
+    }
+
     &__list {
         display: flex;
         flex-direction: column;
@@ -53,18 +69,10 @@
 
             & span {
                 display: flex;
-                font-size: 0;
-                opacity: 0;
-                visibility: hidden;
+                font-size: inherit;
+                margin-left: 8px;
+                width: auto;
                 transition: font-size .3s ease;
-
-                @include mobile {
-                    font-size: inherit;
-                    margin-left: 8px;
-                    width: auto;
-                    opacity: 1;
-                    visibility: visible;
-                }
             }
         }
 
@@ -73,15 +81,9 @@
 
     & .categories__list {
         gap: 0;
-        height: 0;
-        opacity: 0;
         overflow: hidden;
-
-        &.active {
-            margin-top: 16px;
-            height: auto;
-            opacity: 1;
-        }
+        height: auto;
+        opacity: 1;
 
         & a {
             padding: 8px 24px;
@@ -93,7 +95,7 @@
             }
 
             @include hover {
-                color: inherit;
+                color: var(--color-white);
 
                 &:before {
                     display: none;

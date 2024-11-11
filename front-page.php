@@ -211,6 +211,7 @@ get_header();
 
         <?php if (trim(get_the_content()) != ''): ?>
             <div class="games__description">
+                <h1><?php the_title(); ?></h1>
                 <?php the_content(); ?>
             </div>
         <?php endif; ?>

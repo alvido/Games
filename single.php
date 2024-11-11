@@ -20,17 +20,43 @@ get_header();
                 <div class="game__block" id="game-container">
                     <div class="top">
                         <?php
-                        $game_url = get_field('game_url'); // Получаем значение поля для данного термина
-                        
-                        if (!empty($game_url)): ?>
-                            <iframe id="game-iframe" src="<?php echo ($game_url); ?>" width="800" height="600"
-                                scrolling="none" frameborder="0">
-                            </iframe>
-                        <?php endif; ?>
+                        while (have_posts()):
+                            the_post();
 
+                            // Получаем все мета-данные поста типа games
+                            $post_meta = get_post_meta(get_the_ID());
+
+                            // Получаем значения из ACF
+                            $acf_game_url = get_field('game_url'); // поле ACF
+                        
+                            // Проверяем, есть ли необходимые данные в мета-данных поста
+                            if (!empty($post_meta['mabp_swf_url'][0]) && !empty($post_meta['mabp_game_slug'][0])) {
+                                // Получаем значения из мета-данных
+                                $swf_url = $post_meta['mabp_swf_url'][0];
+                                $game_slug = $post_meta['mabp_game_slug'][0];
+                            } elseif (!empty($acf_game_url)) {
+                                // Используем значения из ACF и слаг поста, если swf_url и game_slug отсутствуют
+                                $swf_url = $acf_game_url;
+                                $game_slug = get_post_field('post_name', get_the_ID()); // получаем слаг поста
+                            }
+
+                            // Проверяем, что swf_url и game_slug не пустые перед вставкой iframe
+                            if (!empty($swf_url) && !empty($game_slug)) {
+                                // Формируем URL для iframe
+                                $iframe_url = $swf_url . '?gd_sdk_referrer_url=https://gamedistribution.com/games/' . urlencode($game_slug) . '&gd_sdk_referrer_url=' . urlencode(get_permalink());
+
+                                // Вставляем iframe
+                                echo '<iframe id="game-iframe" src="' . esc_url($iframe_url) . '" width="' . esc_attr($post_meta['mabp_width'][0] ?? '800') . '" height="' . esc_attr($post_meta['mabp_height'][0] ?? '600') . '" frameborder="0" allowfullscreen></iframe>';
+                            } else {
+                                echo '<p>' . __("Game not found or data not available.", "juegos") . '</p>';
+                            }
+
+                        endwhile;
+                        ?>
                     </div>
+
                     <div class="bottom">
-                        <h3><?php the_title(); ?></h3>
+                        <h1><?php the_title(); ?></h1>
                         <div class="actions">
                             <?php
                             function format_number($num)
@@ -254,7 +280,7 @@ get_header();
                     ?>
                 </ul><!-- more like games -->
             </div>
-            <aside class="aside">
+            <div class="aside">
                 <!-- featured games -->
                 <ul class="aside__list ">
                     <?php
@@ -313,12 +339,11 @@ get_header();
                     }
                     ?>
                 </ul> <!-- featured games -->
-            </aside>
+            </div>
         </section>
     </div>
 
 
 </main><!-- #main -->
-
 <?php
 get_footer();

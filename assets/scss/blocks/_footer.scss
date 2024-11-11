@@ -1,6 +1,6 @@
 .footer {
     padding: 24px 32px;
-    
+    border-top: 1px solid #D8D8D82A;
 
     &__nav-list {
         display: flex;
@@ -8,7 +8,7 @@
         gap: 16px;
 
         & a {
-            font-size: 0;
+            font-size: 14px;
             opacity: .5;
 
             @include hover {
@@ -20,7 +20,7 @@
 
     & .copy {
         margin-top: 32px;
-        font-size: 0;
+        font-size: 14px;
         opacity: .5;
         transition-duration: var(--transition-duration);
     }

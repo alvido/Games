@@ -63,7 +63,7 @@ get_header();
 		?>
 
 		<section class="games">
-			<h2><?php _e('Games Catalog', 'juegos'); ?></h2>
+			<h1><?php _e('Games Catalog', 'juegos'); ?></h1>
 			<p><?php _e('Try it NOW!', 'juegos') ?></p>
 
 			<!-- Фильтр -->

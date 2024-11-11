@@ -11,7 +11,7 @@ get_header();
 $args = array(
 	'post_type' => $post_type,
 	's' => get_search_query(),
-	'posts_per_page' => -1, // Количество постов на странице
+	'posts_per_page' => 10, // Количество постов на странице
 	'paged' => get_query_var('paged') ? get_query_var('paged') : 1,
 );
 
@@ -62,14 +62,14 @@ $query = new WP_Query($args);
 					<div class="pagination">
 						<!-- Список страниц -->
 						<?php
-						 $pagination_links = paginate_links(array(
+						$pagination_links = paginate_links(array(
 							'total' => $query->max_num_pages,
 							'type' => 'array',
 							'show_all' => false,
 							'end_size' => 1,
-							'mid_size' => 2,
-							'prev_text' => __('Previous', 'juegos'),
-							'next_text' => __('Next', 'juegos'),
+							'mid_size' => 1,
+							'prev_text' => '<svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.1667 8L3.83342 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.50008 12.6666L13.1667 7.99996L8.50008 3.33329" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' . __('Previous', 'juegos'),
+							'next_text' => __('Next', 'juegos') . ' <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.1667 8L3.83342 8" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8.50008 12.6666L13.1667 7.99996L8.50008 3.33329" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
 						));
 
 						if ($pagination_links) {
@@ -82,9 +82,9 @@ $query = new WP_Query($args);
 						?>
 					</div>
 				<?php endif; ?>
-				<?php
-				the_posts_navigation(); // или the_posts_pagination();
-				?>
+
+
+
 				<?php
 			else:
 				get_template_part('template-parts/content', 'none');

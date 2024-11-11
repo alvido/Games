@@ -25,7 +25,6 @@ body {
 
 main {
     margin: 0 auto;
-    padding-bottom: 50px;
     width: 100%;
     max-width: var(--container-width);
     min-height: 100vh;
@@ -36,6 +35,7 @@ main {
 
 .content {
     flex: 1;
+    margin-bottom: 50px;
     padding-inline: clamp(1.25rem, -0.596rem + 2.88vw, 2rem);
     overflow: hidden;
 }
@@ -62,8 +62,9 @@ h6 {
 }
 
 h1 {
-    @include fluid-text(42, 30);
-    font-weight: 400
+    @include fluid-text(34, 20);
+    font-weight: 400;
+    color: var(--color-white);
 }
 
 h2 {

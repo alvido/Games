@@ -25,12 +25,9 @@ get_header();
         if (!empty($page_subtitle)): ?>
             <span class="subtitle center"><?php the_field('page_subtitle'); ?></span>
         <?php endif; ?>
-        <h2 class="center"><?php the_title(); ?></h2>
+        <h1 class="center"><?php the_title(); ?></h1>
         <p class="text center">
-            <?php
-            $excerpt = get_the_excerpt();
-            echo esc_html($excerpt);
-            ?>
+            <?php the_field('page_text'); ?>
         </p>
         <?php
         $thumbnail_id = get_post_thumbnail_id(); // Получаем ID миниатюры
@@ -42,9 +39,12 @@ get_header();
             echo '</figure>';
         }
         ?>
-        <div class="dark-bg">
-            <?php the_content(); ?>
-        </div>
+        <?php if (trim(get_the_content()) != ''): ?>
+
+            <div class="dark-bg">
+                <?php the_content(); ?>
+            </div>
+        <?php endif; ?>
     </article>
 </main><!-- #main -->
 

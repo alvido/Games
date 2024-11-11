@@ -71,8 +71,8 @@ get_header();
                 <span class="subtitle"><?php echo ($category_subtitle); ?></span>
             <?php endif; ?>
 
-            <h2><?php single_term_title(); ?></h2>
-            <p><?php echo term_description(); ?></p> <!-- Описание категории -->
+            <h1><?php single_term_title(); ?></h1>
+            <div><?php echo term_description(); ?></div> <!-- Описание категории -->
 
             <!-- Фильтр -->
             <div class="games__filter">

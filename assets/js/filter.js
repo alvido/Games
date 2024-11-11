@@ -18,41 +18,53 @@ jQuery(document).ready(function ($) {
 });
 
 
-//
-//
+//fullscreen mode
 document.addEventListener("DOMContentLoaded", function () {
-  // Обработчик события для кнопки полноэкранного режима
-  let fullscreen = document.getElementById('fullscreen-btn');
+  let fullscreenBtn = document.getElementById('fullscreen-btn');
+  let gameContainer = document.getElementById('game-container');
 
-  if (fullscreen) {
-    fullscreen.addEventListener('click', function () {
-      let gameContainer = document.getElementById('game-container');
-
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', function () {
       // Проверяем, поддерживается ли полноэкранный режим
-      if (gameContainer.requestFullscreen) {
-        gameContainer.requestFullscreen();
-      } else if (gameContainer.mozRequestFullScreen) { // Firefox
-        gameContainer.mozRequestFullScreen();
-      } else if (gameContainer.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-        gameContainer.webkitRequestFullscreen();
-      } else if (gameContainer.msRequestFullscreen) { // IE/Edge
-        gameContainer.msRequestFullscreen();
+      if (!document.fullscreenElement &&
+        !document.mozFullScreen &&
+        !document.webkitIsFullScreen &&
+        !document.msFullscreenElement) {
+        // Запрашиваем полноэкранный режим
+        if (gameContainer.requestFullscreen) {
+          gameContainer.requestFullscreen();
+        } else if (gameContainer.mozRequestFullScreen) {
+          gameContainer.mozRequestFullScreen();
+        } else if (gameContainer.webkitRequestFullscreen) {
+          gameContainer.webkitRequestFullscreen();
+        } else if (gameContainer.msRequestFullscreen) {
+          gameContainer.msRequestFullscreen();
+        }
+      } else {
+        // Выход из полноэкранного режима
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
       }
     });
   }
 
   // Функция для управления классом fullscreen
   function toggleFullscreenClass() {
-    let gameContainer = document.getElementById('game-container');
-
     // Проверяем, находится ли контейнер в полноэкранном режиме
     if (document.fullscreenElement ||
       document.mozFullScreen ||
       document.webkitIsFullScreen ||
       document.msFullscreenElement) {
-      gameContainer.classList.add('fullscreen'); // Добавляем класс, когда в полноэкранном режиме
+      gameContainer.classList.add('fullscreen');
     } else {
-      gameContainer.classList.remove('fullscreen'); // Убираем класс, когда не в полноэкранном режиме
+      gameContainer.classList.remove('fullscreen');
     }
   }
 
@@ -61,8 +73,11 @@ document.addEventListener("DOMContentLoaded", function () {
   document.addEventListener('mozfullscreenchange', toggleFullscreenClass);
   document.addEventListener('webkitfullscreenchange', toggleFullscreenClass);
   document.addEventListener('msfullscreenchange', toggleFullscreenClass);
+});
+//fullscreen mode
 
-
+//theatreMod mode
+document.addEventListener("DOMContentLoaded", function () {
   let theatreMod = document.getElementById('theatre-mode-btn');
 
   if (theatreMod) {
@@ -73,8 +88,13 @@ document.addEventListener("DOMContentLoaded", function () {
       gameContainer.classList.toggle('theatre-mode');
     });
   }
+});
+//theatreMod mode
 
-  //likes
+
+
+//likes
+document.addEventListener("DOMContentLoaded", function () {
   document.querySelectorAll('.like-button, .dislike-button').forEach(button => {
     button.addEventListener('click', function () {
       const postId = this.getAttribute('data-post-id');
@@ -106,7 +126,5 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error('Fetch error:', error));
     });
   });
-
-  //likes
 });
-//
+//likes

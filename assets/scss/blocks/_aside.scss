@@ -1,5 +1,4 @@
 .sidebar {
-        min-width: 72px;
         position: relative;
         display: flex;
         flex-direction: column;
@@ -36,37 +35,8 @@
         }
 
         &.active {
-            min-width: 280px;
 
-            & span {
-                font-size: inherit;
-                margin-left: 8px;
-                width: auto;
-                opacity: 1;
-                visibility: visible;
-            }
-
-            & footer {
-                border-top: 1px solid #D8D8D82A;
-
-                & a,
-                & p {
-                    font-size: 14px;
-                }
-            }
-        }
-
-        @include hover {
-            min-width: 280px;
-
-            & span {
-                font-size: inherit;
-                margin-left: 8px;
-                width: auto;
-                opacity: 1;
-                visibility: visible;
-            }
-
+            
             & footer {
                 border-top: 1px solid #D8D8D82A;
 

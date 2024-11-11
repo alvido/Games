@@ -15,10 +15,69 @@
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="author" content="Oleksandr Dorobalo">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="profile" href="https://gmpg.org/xfn/11">
+    <?php if (is_singular('games')): ?>
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "<?php echo esc_js(get_field('jsonld_name')); ?>",
+                "image": "<?php echo esc_url(get_field('jsonld_image')); ?>",
+                "applicationCategory": "<?php echo esc_js(get_field('jsonld_category')); ?>",
+                "url": "<?php echo esc_url(get_field('jsonld_url')); ?>",
+                "applicationSubCategory": "<?php echo esc_js(get_field('jsonld_subcategory')); ?>",
+                "operatingSystem": "<?php echo esc_js(get_field('jsonld_operating_system')); ?>",
+                "description": "<?php echo esc_js(get_field('jsonld_description')); ?>"
+            }
+        </script>
+    <?php endif; ?>
+
+
+
+
+    <?php if (is_singular('games')): ?>
+        <script type="application/ld+json">
+                {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "@id": "<?php echo esc_url(get_post_meta(get_the_ID(), '_faq_url', true)); ?>",
+                    "mainEntity": 
+                        <?php
+                        // Получаем сохраненные вопросы и ответы
+                        $faq = get_post_meta(get_the_ID(), '_faq_data', true);
+                        $faq = $faq ? json_decode($faq, true) : [];
+
+                        $faq_items = [];
+                        foreach ($faq as $item) {
+                            $faq_items[] = [
+                                "@type" => "Question",
+                                "name" => esc_html($item['name'] ?? ''),
+                                "acceptedAnswer" => [
+                                    "@type" => "Answer",
+                                    "text" => esc_html($item['acceptedAnswer']['text'] ?? '')
+                                ]
+                            ];
+                        }
+
+                        // Преобразуем массив в JSON с форматированием
+                        echo wp_json_encode($faq_items, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+                        ?>
+                }
+            </script>
+    <?php endif; ?>
+
+
+
+
+
+
+
+
+
+
+
+
 
     <?php wp_head(); ?>
 </head>
@@ -26,8 +85,7 @@
 <body <?php body_class(); ?>>
     <?php wp_body_open(); ?>
     <div id="page" class="site">
-        <a class="skip-link screen-reader-text"
-            href="#primary"><?php esc_html_e('Skip to content', 'juegos'); ?></a>
+        <a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e('Skip to content', 'juegos'); ?></a>
 
         <header id="masthead" class="header site-header <?php if (is_front_page())
             echo 'home'; ?>">
@@ -40,7 +98,7 @@
                             <img class="logo__image" src="<?php echo esc_url(get_theme_mod('header_logo')); ?>"
                                 alt="<?php bloginfo('name'); ?>">
                         </picture>
-                        <span>games</span>
+                        <span><?php bloginfo('name'); ?></span>
                     </a>
                 <?php else:
                     if (function_exists('the_custom_logo')):
@@ -53,7 +111,7 @@
                                 <picture>
                                     <img src="<?php echo esc_url($logo[0]); ?>" alt="<?php echo esc_attr(get_bloginfo('name')); ?>">
                                 </picture>
-                                <span>games</span>
+                                <span><?php bloginfo('name'); ?></span>
                             </a>
                         <?php endif;
                     endif;

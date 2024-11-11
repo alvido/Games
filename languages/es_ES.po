@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: _s 1.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/_s\n"
-"POT-Creation-Date: 2024-10-12 15:41+0200\n"
-"PO-Revision-Date: 2024-10-12 15:41+0200\n"
+"POT-Creation-Date: 2024-10-30 13:06+0100\n"
+"PO-Revision-Date: 2024-10-30 13:06+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -43,7 +43,7 @@ msgid "Popular Games"
 msgstr "Juegos populares"
 
 #: archive.php:106 front-page.php:47 front-page.php:92 front-page.php:164
-#: single.php:162 single.php:312 taxonomy.php:114
+#: single.php:177 single.php:327 taxonomy.php:114
 msgid "No Games"
 msgstr "Sin juegos"
 
@@ -183,11 +183,27 @@ msgstr "Imagen"
 msgid "No Image"
 msgstr "Sin imagen"
 
-#: header.php:30
+#: functions.php:585 functions.php:606
+msgid "Question"
+msgstr "Pregunta"
+
+#: functions.php:588 functions.php:607
+msgid "Answer"
+msgstr "Respuesta"
+
+#: functions.php:589 functions.php:608
+msgid "Delete question"
+msgstr "Eliminar pregunta"
+
+#: functions.php:597
+msgid "Add question"
+msgstr "Agregar pregunta"
+
+#: header.php:88
 msgid "Skip to content"
 msgstr "Saltar al contenido"
 
-#: header.php:66 search.php:36 sidebar.php:62
+#: header.php:124 search.php:36 sidebar.php:62
 #: template-parts/content-none.php:40 template-parts/content-none.php:61
 msgid "Search"
 msgstr "Buscar"
@@ -197,7 +213,7 @@ msgstr "Buscar"
 msgid "Search Results for: %s"
 msgstr "Resultados de búsqueda para: %s"
 
-#: sidebar.php:44 single.php:168 single.php:205
+#: sidebar.php:44 single.php:183 single.php:220
 msgid "No Categories"
 msgstr "Sin categorías"
 
@@ -205,9 +221,13 @@ msgstr "Sin categorías"
 msgid "Home"
 msgstr "Inicio"
 
-#: sidebar.php:168
+#: sidebar.php:167
 msgid "Categories"
 msgstr "Categorías"
+
+#: single.php:41
+msgid "Game not found or data not available."
+msgstr "Juego no encontrado o datos no disponibles."
 
 #: template-parts/content-none.php:12
 msgid "Nothing Found"

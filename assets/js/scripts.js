@@ -2,8 +2,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Выбираем элементы ссылок в меню
   let menuItems = document.querySelectorAll(".menu-item > a");
-  let categories = document.querySelector(".categories > a");
-  let categoriesList = document.querySelector(".categories__list");
   if (menuItems) {
     menuItems.forEach(item => {
       item.addEventListener("click", function (e) {
@@ -11,10 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
 
-    categories.addEventListener("click", function (e) {
-      this.classList.toggle("active");
-      categoriesList.classList.toggle("active");
-    });
   }
 });
 
@@ -143,11 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
             spaceBetween: 8,
           },
           768: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 8,
           },
           1024: {
-            slidesPerView: 6,
+            slidesPerView: 5,
             spaceBetween: 8,
           },
         },
@@ -171,7 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       initSwiper(`#${categorySlug}`, paginationClass, nextButtonClass, prevButtonClass);
     } else {
-      console.error('swiper-basic not found in section:', section); // Лог ошибки
+      console.log('swiper-basic not found in section:', section); // Лог ошибки
     }
   });
 
@@ -202,5 +196,13 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+});
+//
+
+//
+document.querySelectorAll('.pagination__list .dots').forEach(dot => {
+  if (dot.parentElement) {
+    dot.parentElement.style.display = 'none';
+  }
 });
 //
